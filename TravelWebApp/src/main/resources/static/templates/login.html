@@ -1,1 +1,137 @@
-<h1>Login page</h1>
+<div class="content-wrap">
+<div class="container">
+<div class="divcenter">
+
+<ul class="tabs">
+<li class="inline-block">
+<a href ng-click="loginFlag = true">Login</a></li>
+<li class="inline-block">
+<a href ng-click="loginFlag = false">Register</a></li>
+</ul>
+
+<div class="tabContainer">
+
+<div class="loginClass" ng-show="loginFlag">
+
+<div class="panel panel-default">
+<div style="overflow:auto" class="panel-body">
+<form class="form-horizontal" name="loginForm" ng-submit="login()" novalidate>
+<h3 class="titleClass textCenter">LOGIN</h3>
+
+
+
+<div class="form-group"  ng-class="{ 'has-error has-login' : loginForm.emailid.$invalid && !loginForm.emailid.$pristine }">
+<label for="emailid" class="col-sm-3 control-label">Email Id</label>
+<div class="col-sm-8">
+ <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Enter Email Address"
+ ng-model="email" required>
+                        
+
+ <span ng-show="loginForm.emailid.$invalid && !loginForm.emailid.$pristine" class="form-control-login" aria-hidden="true"></span>
+                        <span ng-show="(loginForm.emailid.$invalid ||
+                                        loginForm.emailid.$error.required) &&
+                                        !loginForm.emailid.$pristine"
+                             class="help-block">Enter a valid email address.</span>
+   
+</div></div>
+
+
+<div class="form-group"  ng-class="{ 'has-error' : loginForm.password.$error.required && !loginForm.password.$pristine }">
+<label for="password" class="col-sm-3 control-label">Password</label>
+<div class="col-sm-8">
+ <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password"
+ ng-model="password" required>
+ <span ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">
+ Password is required.</span>
+  </div>
+
+
+</div>
+<div class="textCenter"><button class="btn btn-success textCenter" ng-disabled="loginForm.$invalid" >Login</button></div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+<div class="registerClass" ng-hide="loginFlag">
+<div class="panel panel-default">
+<div class="panel-body">
+
+<form class="form-horizontal" name="registerForm" ng-submit="register()" novalidate>
+<h3 class="titleClass textCenter">REGISTER</h3>
+
+<div class="form-group"  ng-class="{ 'has-error' : registerForm.firstname.$error.required && !registerForm.firstname.$pristine }">
+<label for="firstname" class="col-sm-3 control-label">First Name</label>
+<div class="col-sm-8">
+ <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name"
+ ng-model="firstname" required>
+ <span ng-show="registerForm.firstname.$error.required && !registerForm.firstname.$pristine" class="help-block">
+ First Name is required.</span>
+  </div></div>
+ 
+ <div class="form-group"  ng-class="{ 'has-error' : registerForm.lastname.$error.required && !registerForm.lastname.$pristine }">
+<label for="lastname" class="col-sm-3 control-label">Last Name</label>
+<div class="col-sm-8">
+ <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name"
+ ng-model="lastname" required>
+ <span ng-show="registerForm.lastname.$error.required && !registerForm.lastname.$pristine" class="help-block">
+ Last Name is required.</span>
+  </div></div>
+  
+  
+ <div class="form-group"  ng-class="{ 'has-error has-login' : registerForm.emailid.$invalid && !registerForm.emailid.$pristine }">
+<label for="emailid" class="col-sm-3 control-label">Email Id</label>
+<div class="col-sm-8">
+ <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Enter Email Address"
+ ng-model="register.email" required>
+                        
+
+ <span ng-show="registerForm.emailid.$invalid && !registerForm.emailid.$pristine" class="form-control-feedback" aria-hidden="true"></span>
+                        <span ng-show="(registerForm.emailid.$invalid ||
+                                        registerForm.emailid.$error.required) &&
+                                        !registerForm.emailid.$pristine"
+                             class="help-block">Enter a valid email address.</span>
+   
+</div></div>
+
+
+<div class="form-group"  ng-class="{ 'has-error' : registerForm.password.$error.required && !registerForm.password.$pristine }">
+<label for="password" class="col-sm-3 control-label">Password</label>
+<div class="col-sm-8">
+ <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password"
+ ng-model="register.password" required>
+ <span ng-show="registerForm.password.$error.required && !registerForm.password.$pristine" class="help-block">
+ Password is required.</span>
+  </div></div>
+
+
+<div class="form-group"  ng-class="{ 'has-error' : registerForm.confirmpassword.$error.required && !registerForm.confirmpassword.$pristine }">
+<label for="confirmpassword" class="col-sm-3 control-label"> Confirm Password</label>
+<div class="col-sm-8">
+ <input type="text" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password"
+ ng-model="register.confirmpassword" required>
+ <span ng-show="registerForm.confirmpassword.$error.required && !registerForm.confirmpassword.$pristine" class="help-block">
+ Please Confirm the password.</span>
+ 
+  <span ng-show="registerForm.matchpassword.$error.required && !registerForm.matchpassword.$pristine" class="help-block">
+ Password doesn't match.</span>
+  </div>
+</div>
+
+<div class="textCenter"><button class="btn btn-success" ng-disabled="registerForm.$invalid" >Register</button></div>
+</form>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+</div> 
+</div>
+</div>
+</div>

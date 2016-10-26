@@ -1,0 +1,97 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+	 font-family: 'Roboto', 'sans-serif';
+}
+body,html{
+	    font-family: 'Roboto', 'sans-serif' !important;
+	    font-size: 16px !important;
+	    background:#fff;
+	    height:100%;
+}
+
+
+::-moz-selection {
+    background: #f2c2c9;
+    color: #f2e6e7;
+    text-shadow: none;
+}
+
+::selection {
+    background: #16a085;
+    color: #f2e6e7;
+    text-shadow: none;
+}
+.textCenter{
+	text-align:center;
+}
+
+a{
+ text-decoration: none !important;	
+ cursor: pointer;
+}
+
+a:hover{
+	top: 0;
+    background-color: #a3ec93 !important;
+    color: #FFF;
+}
+
+.mainWrapper{
+	height:80%;
+}
+
+
+
+
+/* <-- dashboard Page -> */
+.sidenavleft{
+	height:100%;
+	float:left;
+	
+}
+
+/* <-- Login Details -> */
+.divcenter{
+	max-width:500px;
+	margin: 0 auto !important;
+	position: relative;
+	float: none;
+}
+.inline-block{
+	float:none;
+	display: inline-block;
+}
+.tabs{
+	list-style: none;
+    text-align: center;
+}
+.tabs li a{
+	display: block;
+    padding: 0 15px;
+    color: #444;
+    height: 40px;
+    line-height: 40px;
+    background-color: #F2F2F2;
+    font-size: 14px;
+    font-weight: bold;
+}
+.titleClass{
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-weight:500px;
+	}
+
+
+/* <-- Footer Details -> */
+.footer{
+	height:9%;
+	background-color: #a3ec93;
+}
+.footerCenter{
+	text-align:center;
+	padding-top:10px;
+}
+
+

@@ -1,23 +1,67 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE html>
 <html lang="en" ng-app="TravelApp">
 <head>
-  <title>Travel Management System</title>
+  <title>Travel Planner System</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700|Open+Sans:700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/BaseStyle.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  
+  
   <script src="lib/angular.min.js"></script>
   <script src="lib/angular-route.js"></script>
+  <script src="lib/angular-resource.js"></script>
   <script src="lib/ui-bootstrap-tpls-2.1.4.min.js"></script>
+  
+  <script src="templates/login.html"></script>
+<script src="directives/route.js"></script>
+  <script src="controller/LoginController.js"></script>
 </head>
 <body>
 
-<div class="" ng-view></div>
-<script src="/templates/login.html"></script>
-<script src="directives/route.js"></script>
+<!-- Header Section -->
+
+<header ng-controller="baseController">
+<nav style="background-color:#a3ec93" id="header" class="navbar navbar-default">
+<div class="container">
+<div  class="navbar-header">
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#rightHeader" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <h3 style="margin-top:10px">Travel Planner System</h3>
+</div>
+
+<div class="collapse navbar-collapse" id="rightHeader">
+<form class="navbar-form navbar-right">
+       
+        <button type="submit" ng-click="login()" class="btn btn-primary">Login</button>
+         <button type="submit" ng-click="login()" class="btn btn-primary">Register</button>
+      </form>
 
 
+</div>
+</div>
+</nav>
+</header>
+
+<!-- view section -->
+
+<div class="mainWrapper" ng-view></div>
+
+
+<!-- footer section -->
+
+<footer class="footer">
+<div class="container">
+<p class="footerCenter">Copyright &copy; 2016, Travel Planner System </p>
+</div>
+</footer>
 </body>
 </html>
