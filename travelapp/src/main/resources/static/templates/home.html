@@ -9,9 +9,41 @@
 
 </div> -->
 
-<div class="container-fluid home">
+
+
+
+
+
+<div>
+
+  <!-- <select ng-model="vm.types">
+    <option value="['geocode']">Geodode</option>
+    <option value="['establishment']">Establishment</option>
+    <option value="['address']">Address</option>
+  </select><br/> -->
+ Enter an address: <br/>
+  <input places-auto-complete size=80
+    ng-model="vm.address"
+    
+    types="{{types}}"
+    on-place-changed="vm.placeChanged()" /> <br/></div>
+<button ng-click = "search()">Search</button>
+ <ng-map center='current-position'
+    geo-fallback-center="[35.2271, -80.8431]"
+    geo-callback="vm.callbackFunc('you')"><marker position="{{vm.address}}" title="{{vm.address}}"></marker>
+    <marker position="current-position" title="{{vm.address}}">
+   </ng-map> 
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid home">
   <div class="row content">
- <!--    <div class="sidenavleft">
+    <div class="col-lg-3 sidenavleft">
       <h4>User</h4>
       <ul class="nav nav-pills nav-stacked">
         
@@ -31,16 +63,11 @@
     </div>
     
     
-    <div class="sidenavright">
+    <div class="col-lg-9 sidenavright">
     
      Hello Welcome
     </div>
     
-     -->
-     
-     <ng-map id="map" center='current-position'
-    geo-fallback-center="[35.2271, -80.8431]"
-    geo-callback="vm.callbackFunc('you')">
-    <marker position='current-position' title="Hello World!"></marker></ng-map>
+    
     </div>
-    </div>
+    </div> -->

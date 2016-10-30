@@ -24,7 +24,7 @@
 <label for="emailid" class="col-sm-3 control-label">Email Id</label>
 <div class="col-sm-8">
  <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Enter Email Address"
- ng-model="email" required>
+ ng-model="loginDetails.email" required>
                         
 
  <span ng-show="loginForm.emailid.$invalid && !loginForm.emailid.$pristine" class="form-control-login" aria-hidden="true"></span>
@@ -39,8 +39,8 @@
 <div class="form-group"  ng-class="{ 'has-error' : loginForm.password.$error.required && !loginForm.password.$pristine }">
 <label for="password" class="col-sm-3 control-label">Password</label>
 <div class="col-sm-8">
- <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password"
- ng-model="password" required>
+ <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"
+ ng-model="loginDetails.password" required>
  <span ng-show="loginForm.password.$error.required && !loginForm.password.$pristine" class="help-block">
  Password is required.</span>
   </div>
@@ -66,7 +66,7 @@
 <label for="firstname" class="col-sm-3 control-label">First Name</label>
 <div class="col-sm-8">
  <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name"
- ng-model="register.firstname" required>
+ ng-model="registerDetails.firstName" required>
  <span ng-show="registerForm.firstname.$error.required && !registerForm.firstname.$pristine" class="help-block">
  First Name is required.</span>
   </div></div>
@@ -75,7 +75,7 @@
 <label for="lastname" class="col-sm-3 control-label">Last Name</label>
 <div class="col-sm-8">
  <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name"
- ng-model="register.lastname" required>
+ ng-model="registerDetails.lastName" required>
  <span ng-show="registerForm.lastname.$error.required && !registerForm.lastname.$pristine" class="help-block">
  Last Name is required.</span>
   </div></div>
@@ -85,7 +85,7 @@
 <label for="emailid" class="col-sm-3 control-label">Email Id</label>
 <div class="col-sm-8">
  <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Enter Email Address"
- ng-model="register.email" required>
+ ng-model="registerDetails.email" required>
                         
 
  <span ng-show="registerForm.emailid.$invalid && !registerForm.emailid.$pristine" class="form-control-feedback" aria-hidden="true"></span>
@@ -100,8 +100,8 @@
 <div class="form-group"  ng-class="{ 'has-error' : registerForm.password.$error.required && !registerForm.password.$pristine }">
 <label for="password" class="col-sm-3 control-label">Password</label>
 <div class="col-sm-8">
- <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password"
- ng-model="register.password" required>
+ <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"
+ ng-model="registerDetails.password" required>
  <span ng-show="registerForm.password.$error.required && !registerForm.password.$pristine" class="help-block">
  Password is required.</span>
   </div></div>
@@ -110,8 +110,8 @@
 <div class="form-group"  ng-class="{ 'has-error' : registerForm.confirmpassword.$error.required && !registerForm.confirmpassword.$pristine }">
 <label for="confirmpassword" class="col-sm-3 control-label"> Confirm Password</label>
 <div class="col-sm-8">
- <input type="text" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password"
- ng-model="register.confirmpassword" required>
+ <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password"
+ ng-model="registerDetails.confirmpassword" required>
  <span ng-show="registerForm.confirmpassword.$error.required && !registerForm.confirmpassword.$pristine" class="help-block">
  Please Confirm the password.</span>
  

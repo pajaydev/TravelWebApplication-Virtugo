@@ -23,9 +23,6 @@ body,html{
     color: #f2e6e7;
     text-shadow: none;
 }
-.fullheight{
-	height:100%;
-}
 .textCenter{
 	text-align:center;
 }
@@ -45,6 +42,9 @@ a:hover{
 	height:80%;
 }
 
+.fullHeight{
+	height:100%;
+}
 
 
 
@@ -87,15 +87,10 @@ a:hover{
 	}
 
 
-/* <-- Map styling -> */
-
-#map{
-	
-        height: 300px;
-        width: 300px;
-      
+/* <-- Dashboard Details -> */
+.placesDiv{
+	overflow: auto;
 }
-
 
 /* <-- Footer Details -> */
 .footer{

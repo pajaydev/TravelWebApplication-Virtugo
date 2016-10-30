@@ -1,13 +1,14 @@
-var travelApp = angular.module("TravelApp",["ngRoute","ui.bootstrap","ngMap"]);
+var travelApp = angular.module("TravelApp",["ngRoute","ui.bootstrap","ngResource","ngMap"]);
 alert("route");
 travelApp.config(function($routeProvider){
 	$routeProvider.
 	when("/home",{
 		templateUrl:"templates/home.html",
-		controller:"homeController"
+		controller:"homeController as vm"
 	})
 	.when("/dashboard",{
-		templateUrl:"templates/dashboard.html"
+		templateUrl:"templates/dashboard.html",
+		controller:"homeController as vm"
 	})
 	.when("/index",{
 		templateUrl:"templates/home.html",
@@ -26,6 +27,7 @@ travelApp.config(function($routeProvider){
 travelApp.controller("baseController",function($scope,$location,$route){
 	alert("&&&&&&&&&&&&");
 	var template = "";
+	$scope.buttonEnable = true;
 	$scope.login = function(){
 		alert("openpopup");
 		/*$scope.loginForm.$setPristine();
@@ -38,5 +40,13 @@ travelApp.controller("baseController",function($scope,$location,$route){
 		 
 		 
 	}
+	
+	 $scope.logOut = function(){
+		   alert("logout in home");
+		   $scope.buttonEnable = true;
+		   $location.path('/home');
+	   }
+	 
+	 
 	
 });
