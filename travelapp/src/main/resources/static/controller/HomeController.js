@@ -1,6 +1,6 @@
 travelApp.controller("homeController",function(NgMap,baseFactory,$location,$rootScope,$scope){
-	alert("home controller");
-	alert($location.path());
+	
+	
 	if($location.path() == "/dashboard"){
 	   $rootScope.$$childHead.buttonEnable = false;
 	}
@@ -10,10 +10,9 @@ travelApp.controller("homeController",function(NgMap,baseFactory,$location,$root
 	    vm.message = 'You can not hide. :)';
 	   
 	    vm.placeChanged = function() {
-	    	alert("place changed");
-	    	alert(vm.address);
+	    	
 	       vm.place = this.getPlace();
-	        alert(vm.place);
+	       
 	        console.log('location', vm.place.geometry.location);
 	        vm.map.setCenter(vm.place.geometry.location);
 	       getNearestLocations(vm.place.geometry.location,vm.place.name);
@@ -35,7 +34,7 @@ travelApp.controller("homeController",function(NgMap,baseFactory,$location,$root
 		   alert("nearest locations"); */
 		   
 		  baseFactory.getNearByLocations(location, place).then(function (result,status) {
-			  alert("Working inside vcontroller");
+			  
 			  $scope.filteredPlaces = result.data.response.groups[0].items;
 			  $scope.filteredPlacesCount  = result.data.response.totalResults;
 			    
@@ -44,7 +43,7 @@ travelApp.controller("homeController",function(NgMap,baseFactory,$location,$root
           }); }
 	   
 	   
-	   
+	  
 	   $scope.buildCategoryIcon = function (icon) {
 
 	        return icon.prefix + '44' + icon.suffix;

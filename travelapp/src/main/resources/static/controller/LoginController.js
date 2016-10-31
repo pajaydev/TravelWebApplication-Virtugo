@@ -1,15 +1,13 @@
 //Controller for login and signup corresponds to Login.html
 
 travelApp.controller("loginController",["$scope","$http","$location",function($scope,$http,$location){
-	alert("login controller");
+	
 	$scope.loginDetails = {email:"",password:""};
 	$scope.loginFlag = true;
 	$scope.registerDetails = {email:"",password:"",firstName:"",lastName:"",userName:""};
 	
 	
-	$scope.logOut = function(){
-		alert("Logout");
-	}
+	
 	//Function used to check user credentials
 	$scope.login = function(){
 		
@@ -23,7 +21,7 @@ travelApp.controller("loginController",["$scope","$http","$location",function($s
 			}
 		$http(request).then(
 				function(response) {
-					alert("success");
+					
 					$scope.$parent.$$childHead.buttonEnable = false;
 					//$scope.apply();
 					
