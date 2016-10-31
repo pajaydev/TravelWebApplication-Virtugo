@@ -30,8 +30,9 @@
 <button ng-click = "search()">Search</button>
  <ng-map center='current-position'
     geo-fallback-center="[35.2271, -80.8431]"
-    geo-callback="vm.callbackFunc('you')"><marker position="{{vm.address}}" title="{{vm.address}}"></marker>
-    <marker position="current-position" title="{{vm.address}}">
+    geo-callback="vm.callbackFunc('you')"><marker  position="{{vm.address}}" title="{{vm.address}}"></marker>
+    <marker  position="current-position" title="{{vm.address}}">
+    <marker ng-repeat="p in filteredPlaces"  position="{{p.venue.location.address}}"  title="{{p.venue.name}}"></marker></ng-map>
    </ng-map> 
 
 
