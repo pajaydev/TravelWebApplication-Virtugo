@@ -36,9 +36,9 @@ public class PlanController {
 		System.out.println("Add plans************");
 		System.out.println("Received Plan as: \nPlace " + plan.getAddress() + "\nCountry: ");
 		LOGGER.debug("Received Plan as: \nPlace " + plan.getAddress() + "\nCountry: ");
-		if(plan.getDateTravel().toString() == ""){
+		/*if(null != plan.getDateTravel() || plan.getDateTravel().toString() == ""){*/
 			plan.setDateTravel(new java.sql.Date(new Date().getTime()));
-		}
+		
 		plan.setDateAdded(new java.sql.Date(new Date().getTime()));
 		return planService.addPlan(plan);
 	}

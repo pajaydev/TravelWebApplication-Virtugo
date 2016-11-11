@@ -112,7 +112,7 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
 					
 				},
 				function(response){
-					$scope.hotelFlag = true;
+					//$scope.hotelFlag = true;
 				});
     };
     
