@@ -19,8 +19,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class User {
     @Id
 	@GeneratedValue
-	@Column(name="User_Id")
-	private Integer id;
+	@Column(name="UserId")
+	private Integer userId;
     @NotNull
     @Column(name="User_Name")
     private String userName;
@@ -37,7 +37,7 @@ public class User {
 		
 	}
   public User(Integer id){
-		this.id = id;
+		this.userId = id;
 	}
     public User(String userName, String password){
 	this.userName = userName;
@@ -47,13 +47,13 @@ public class User {
 	 * @return the id
 	 */
 	public Integer getId() {
-		return id;
+		return userId;
 	}
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(Integer id) {
-		this.id = id;
+		this.userId = id;
 	}
 	/**
 	 * @return the userName

@@ -1,15 +1,14 @@
 travelApp.factory('baseFactory',['$http','$resource',function($http,$resource){
 	
-	alert("invoking factory");
-	//var baseUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=point_of_interest&radius=5000';
-	var baseUrl = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?type=point_of_interest&radius=5000&location=40.71,-74.00&keyword=NewYork&key=AIzaSyDWIQDRLj908AucZ1ijuJT7oUEPpK9zGxk';
+	
+	var baseUrl = "https://api.foursquare.com/v2/venues/explore/?near=";
 	var key = "AIzaSyDWIQDRLj908AucZ1ijuJT7oUEPpK9zGxk";
 	var isLoggedIn = false;
 	var baseFactory = {};
 	baseFactory.getNearByLocations = function(location,place){
 		
 		  return $http.get(
-				    "https://api.foursquare.com/v2/venues/explore/?near=" +
+				    baseUrl +
 				    place +
 				    "&venuePhotos=1&section=" +
 				    "touristplaces" +
@@ -17,6 +16,49 @@ travelApp.factory('baseFactory',['$http','$resource',function($http,$resource){
 				    "&client_secret=" + "OP0UKBNHW22XAJX1O4NQ3O3FARYOUZEZG1YXTMXEWYBWXGOR" +
 				    " &v=20131124");
 		  };
+		  
+			baseFactory.getNearByHotels = function(location,place){
+				
+				  return $http.get(
+						    baseUrl +
+						    place +
+						    "&venuePhotos=1&query=" +
+						    "hotels" +
+						    "&client_id=" + "OU2PQCUCOHJ33UKO0333GTGSKIJ0CLRG14Y35XLPF2JRYRCC" +
+						    "&client_secret=" + "OP0UKBNHW22XAJX1O4NQ3O3FARYOUZEZG1YXTMXEWYBWXGOR" +
+						    " &v=20131124");
+				  };
+				  
+				  
+				  
+     baseFactory.getWeatherDetails = function(place,date){
+    	     alert("factoryyyyyyyyyyyyy");
+			 return $http.jsonp("https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
+					 place.lat+","+place.lng+","+date+"T00:00:00?callback=JSON_CALLBACK");
+    	     
+    	   /*return $http({
+    	         url: "https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
+					 place.lat+","+place.lng+",2016-11-06T00"+":00:00",
+    	         method: "GET",
+    	         withCredentials: true,
+    	         headers: {
+    	                     'Content-Type': 'application/json; charset=utf-8'
+    	         }
+    	     });*/
+    	   /*  return $resource("https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
+					 place.lat+","+place.lng+",2016-11-06T00"+":00:00",
+    	    	      {
+    	    	        
+    	    	        mode: 'json',
+    	    	        callback: 'JSON_CALLBACK',
+    	    	        units: 'metric',
+    	    	        lang: 'en'
+    	    	      });*/
+    	     
+    	    /* return $http.jsonp(
+    	    		 "https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
+					 place.lat+","+place.lng+",2016-11-06T00:00:00",{jsonpCallbackParam: 'callback'});*/
+	  };
 	
 	baseFactory.Session = function(username){
 		return{

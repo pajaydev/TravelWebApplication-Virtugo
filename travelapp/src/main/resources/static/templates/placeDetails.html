@@ -1,0 +1,125 @@
+<div class="container fullHeight">
+<div style="height:20%" class="row">
+
+  <div class="col-xs-4 col-md-2">
+                            <a href="" data-ng-click="showVenuePhotos(placeDetails.name)">
+                                <img data-ng-src="{{buildVenueThumbnail(placeDetails.photos.groups[0])}}" class="img-thumbnail" /></a>
+                        </div>
+
+<div class="col-md-5">
+<strong style="text-align:center">{{placeDetails.name}}</strong><br>
+ Rating: <span class="badge">{{placeDetails.rating | number:1}}</span><br>
+<p class="text-warning"><small>{{(placeDetails.location.address != null) && placeDetails.location.address}} - {{placeDetails.categories[0].shortName}}, {{placeDetails.location.city}} - {{placeDetails.location.country}}</small></p>
+<p>{{placeDetails.tips[0].text}}</p>
+</div>
+<div class="col-md-5 rightPlacesDiv">
+
+<!-- date picker component -->
+Date of Travel:
+ <input type="text" style="width:50%;height:28px;display:inline" class="form-control" uib-datepicker-popup="{{dateFormat}}" ng-model="today" name="availabledate" is-open="availableDatePopup.opened" datepicker-options="availableDateOptions" ng-required="true" close-text="Close" ng-click="OpenAvailableDate()"
+                ng-change="ChangeExpiryMinDate(AvailableDate)" placeholder="Enter Date" />
+ <div class = "buttonClass">          
+<!-- <button type="submit" class="btn btn-default" ng-click="getHotels()" >View Hotels</button> -->
+<button type="submit" style="padding: 3px 10px;" class="btn btn-default" ng-click="getWeather()" >Climate Details</button>
+<button type="submit" style="padding: 3px 10px;" class="btn btn-default" ng-click="saveDetails()" >Save Details</button>
+</div>
+</div>
+</div>
+<div class="row secondRow">
+
+
+
+ <div class="placeDiv">
+  <div data-ng-show="hotelFlag" class="text-center text-warning"><strong>No Nearby Hotels found</strong></div>
+    <div data-ng-show="hotelSuccess" class="text-success"><p>Hotel details has been saved</p></div>
+  <strong>Nearby Hotels:</strong>
+<ul class="list-group" data-ng-repeat="item in filteredPlaces">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-1">
+                            <img data-ng-src="{{buildCategoryIcon(item.venue.categories[0].icon)}}"
+                                title="{{item.venue.categories[0].shortName}}" class="venueIcon" />
+                        </div>
+                        <div class="col-xs-6 col-md-8">
+                            <a href="" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
+                                <h4 class="venueName">{{item.venue.name}}</h4>
+                            </a>
+                        </div>
+                        <div class="col-xs-4 col-md-3">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 col-md-1">
+                            <span class="badge">{{item.venue.rating | number:1}}</span>
+                        </div>
+                        <div class="col-xs-6 col-md-8">
+                            <p class="text-warning"><small>{{(item.venue.location.address != null) && item.venue.location.address}} - {{item.venue.categories[0].shortName}}</small></p>
+                            <p>{{item.tips[0].text}}</p>
+                           
+                            <a href="" data-ng-click="saveHotel(item.venue)"><span class="glyphicon glyphicon-bookmark"></span>Save or bookmark Hotel</a>
+                        </div>
+                        <div class="col-xs-4 col-md-3">
+                            <a href="" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
+                                <img data-ng-src="{{buildVenueThumbnail(item.venue.photos.groups[0])}}" class="img-thumbnail" /></a>
+                        </div>
+                    </div>
+
+                </li>
+            </ul></div>
+            
+            <div class="weatherDiv" >
+            
+                   
+                    <div data-ng-show="weatherFlag" class="text-center text-warning"><strong>No Weather Details found</strong></div>
+                    <div class="col-md-6">
+                    <h4> {{placeDetails.location.city}} <small>timezone: {{weatherDetails.timezone}} </small></h4><br>
+                    
+                    <img data-ng-src={{icon}} ></img>
+                    <table class="table table-bordered">
+  <h4 class="temperature" >{{convertToCelsius(weatherDetails.currently.temperature)}}  &#8451;</h4>
+  <tbody>
+    <tr class="table-active">
+      
+      <td>Wind Speed</td>
+      <td>{{weatherDetails.currently.windSpeed}}Kmph</td>
+      
+    </tr>
+    <tr>
+     
+      <td>Pressure</td>
+      <td>{{weatherDetails.currently.pressure}}</td>
+     
+    </tr>
+    <tr class="table-active">
+      
+      <td>humidity</td>
+      <td>{{weatherDetails.currently.humidity}}</td>
+      
+    </tr>
+    <tr>
+      
+      <td>Max Temperature</td>
+      <td>{{convertToCelsius(weatherDetails.daily.data[0].temperatureMax)}} &#8451;</td>
+      
+    </tr>
+    <tr class="table-active">
+      
+      <td>Min Temperature</td>
+      <td>{{convertToCelsius(weatherDetails.daily.data[0].temperatureMin)}} &#8451;</td>
+      
+    </tr>
+    
+    <tr>
+      
+      <td>Summary</td>
+      <td>{{weatherDetails.daily.data[0].summary}}</td>
+      
+    </tr>
+    
+    
+  </tbody>
+</table></div></div> 
+
+</div>
+</div>

@@ -1,74 +1,43 @@
-<!-- <div class="leftbar">
-<ul>
-<li>User</li>
-<li>My Dashboard</li>
-<li>My Plans</li>
-<li>Sign Out</li></ul>
-</div>
-<div class="rightbar">
-
-</div> -->
+<!--  Home Page for Guest User -->
 
 
 
-
-
-
-<div>
-
-  <!-- <select ng-model="vm.types">
-    <option value="['geocode']">Geodode</option>
-    <option value="['establishment']">Establishment</option>
-    <option value="['address']">Address</option>
-  </select><br/> -->
- Enter an address: <br/>
-  <input places-auto-complete size=80
+<!-- <div class=homeImage ng-show="showMap">
+    <div class="inputPlace">
+    <input  places-auto-complete size=80
     ng-model="vm.address"
-    
     types="{{types}}"
-    on-place-changed="vm.placeChanged()" /> <br/></div>
-<button ng-click = "search()">Search</button>
- <ng-map center='current-position'
+    on-place-changed="vm.placeChanged()" />
+    </div>
+</div>
+ -->
+
+
+
+<div class="container fullHeight">
+<div class="row fullHeight">
+<div class="col-md-12">
+  
+
+
+<div style="margin-top:20px">
+    
+  <input class="searchClass" style="width: 400px;
+    align-items: center;
+    margin-left: 300px;" places-auto-complete size=80
+    ng-model="vm.address"
+    types="{{types}}"
+    on-place-changed="vm.placeChanged()" placeholder="Enter the location to search.." /> <br/>
+    
+    <!--  Showing Map for Guest User -->
+
+ <ng-map style="margin-top:20px" zoom="11" center='current-position'
     geo-fallback-center="[35.2271, -80.8431]"
     geo-callback="vm.callbackFunc('you')"><marker  position="{{vm.address}}" title="{{vm.address}}"></marker>
     <marker  position="current-position" title="{{vm.address}}">
-    <marker ng-repeat="p in filteredPlaces"  position="{{p.venue.location.address}}"  title="{{p.venue.name}}"></marker></ng-map>
+    <marker ng-repeat="p in filteredPlaces"  position="{{p.venue.location.address}}"  title="{{p.venue.name}} (please login to view details)"></marker></ng-map>
    </ng-map> 
-
-
-
-
-
-
-
-
-<!-- <div class="container-fluid home">
-  <div class="row content">
-    <div class="col-lg-3 sidenavleft">
-      <h4>User</h4>
-      <ul class="nav nav-pills nav-stacked">
-        
-        <li><a href="#section2" data-ng-click="">My Dashboard</a></li>
-        <li><a href="#section2" data-ng-click="">My Plans</a></li>
-        <li><a href="#section3" data-ng-click="">Sign Out</a></li>
-        
-      </ul><br>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search Blog..">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </span>
-      </div>
-    </div>
-    
-    
-    <div class="col-lg-9 sidenavright">
-    
-     Hello Welcome
-    </div>
-    
-    
-    </div>
-    </div> -->
+</div>
+</div>
+</div>
+</div>

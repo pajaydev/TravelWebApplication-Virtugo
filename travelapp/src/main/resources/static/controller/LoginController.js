@@ -1,11 +1,16 @@
 //Controller for login and signup corresponds to Login.html
 
-travelApp.controller("loginController",["$scope","$http","$location",function($scope,$http,$location){
+travelApp.controller("loginController",["$scope","$http","$location","$cookieStore","$route",function($scope,$http,$location,$cookieStore,$route){
 	
 	$scope.loginDetails = {email:"",password:""};
 	$scope.loginFlag = true;
 	$scope.registerDetails = {email:"",password:"",firstName:"",lastName:"",userName:""};
-	
+	 $scope.pwCheck=function(){
+	        if($scope.registerDetails.password!=$scope.registerDetails.confirmpassword){
+	            $scope.registerForm.$invalid=true;
+	            $scope.pwMatch=true;
+	        }
+	    };
 	
 	
 	//Function used to check user credentials
@@ -24,7 +29,8 @@ travelApp.controller("loginController",["$scope","$http","$location",function($s
 					
 					$scope.$parent.$$childHead.buttonEnable = false;
 					//$scope.apply();
-					
+					$cookieStore.put('userName',response.data.userName);
+					alert($cookieStore.get('userName'));
 					$location.path("/dashboard");
 					
 				},
@@ -47,7 +53,9 @@ travelApp.controller("loginController",["$scope","$http","$location",function($s
 			}
 		$http(request).then(
 				function(response) {
+					$route.reload();
 					alert("Registration is successful");
+					$location.path("/login");
 					$route.reload();
 					
 				},

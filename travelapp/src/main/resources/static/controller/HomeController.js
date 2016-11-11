@@ -1,8 +1,19 @@
-travelApp.controller("homeController",function(NgMap,baseFactory,$location,$rootScope,$scope){
+travelApp.controller("homeController",function(NgMap,baseFactory,baseService,$location,$rootScope,$scope,$cookieStore){
 	
-	
+	$scope.showMap=true;
 	if($location.path() == "/dashboard"){
-	   $rootScope.$$childHead.buttonEnable = false;
+	   if($cookieStore != undefined && $cookieStore.get('userName') != ""){
+		   $rootScope.$$childHead.buttonEnable = false;
+	   }else{
+		   alert("Hey Please Login Into Application!!");
+		   $location.path("/home");
+		   $rootScope.$$childHead.buttonEnable = true;
+		   
+	   }
+	   
+	}else{
+		$cookieStore.put('userName',"");
+		$rootScope.$$childHead.buttonEnable = true;
 	}
 	  var vm = this;
 	  
@@ -10,9 +21,17 @@ travelApp.controller("homeController",function(NgMap,baseFactory,$location,$root
 	    vm.message = 'You can not hide. :)';
 	   
 	    vm.placeChanged = function() {
-	    	
+	    	$scope.showMap = false;
 	       vm.place = this.getPlace();
-	       
+	       NgMap.getMap().then(function(map) {
+			      vm.map = map;
+			    });
+		    
+		    vm.callbackFunc = function(param) {
+		    	if(vm.map.getCenter() != undefined){
+		      console.log('I know where '+ param +' are. ' + vm.message);
+		      console.log('You are at' + vm.map.getCenter());
+		    }};
 	        console.log('location', vm.place.geometry.location);
 	        vm.map.setCenter(vm.place.geometry.location);
 	       getNearestLocations(vm.place.geometry.location,vm.place.name);
@@ -32,14 +51,15 @@ travelApp.controller("homeController",function(NgMap,baseFactory,$location,$root
 		   /*var trimPlace = place.replace(/ /g,'');
 		   location = "40.71,-74.00";
 		   alert("nearest locations"); */
-		   
+	
 		  baseFactory.getNearByLocations(location, place).then(function (result,status) {
 			  
 			  $scope.filteredPlaces = result.data.response.groups[0].items;
 			  $scope.filteredPlacesCount  = result.data.response.totalResults;
 			    
           }, function (error) {
-              alert("error"+error.message);
+              //alert("error"+error.message);
+        	  alert("No Nearby locations available");
           }); }
 	   
 	   
@@ -54,6 +74,13 @@ travelApp.controller("homeController",function(NgMap,baseFactory,$location,$root
 	        return photo.items[0].prefix + '128x128' + photo.items[0].suffix;
 	    };
 	  
-	   //baseFactory.getDishes().query();
+	  
+	    //To View Place details
+	    
+	    $scope.viewDetails = function(value){
+	    	alert("VIew Details"+value);
+	    	baseService.setLocationDetails(value);
+	    	$location.path("/placeDetails");
+	    }
 	  
 })

@@ -6,9 +6,10 @@
 }
 body,html{
 	    font-family: 'Roboto', 'sans-serif' !important;
-	    font-size: 16px !important;
+	    font-size: 14px !important;
 	    background:#fff;
 	    height:100%;
+	    overflow:hidden;
 }
 
 
@@ -34,17 +35,43 @@ a{
 
 a:hover{
 	top: 0;
-    background-color: #a3ec93 !important;
+    background-color: grey !important;
     color: #FFF;
 }
 
 .mainWrapper{
-	height:80%;
+	height:84%;
+	margin-top:-20px;
+	background-color:#f0eeee;	
 }
 
 .fullHeight{
 	height:100%;
 }
+
+.navbar-default .navbar-nav>li>a {
+	color:white !important;
+}
+
+/* <-- home Page -> */
+
+.homeImage{
+    height: 100%;
+    width:100%;
+    margin-top:-20px;
+    background: url("/images/background2.png");
+    background-size: cover;
+    max-height:100%;
+    max-width:100%;
+    background-repeat: no-repeat;
+    
+}
+
+.inputPlace{
+    height:100%;
+    width:100%;
+}
+
 
 
 
@@ -53,8 +80,11 @@ a:hover{
 	height:100%;
 	float:left;
 	
+	
 }
-
+.sidenavright{
+	margin-top:50px;
+}
 /* <-- Login Details -> */
 .divcenter{
 	max-width:500px;
@@ -76,7 +106,7 @@ a:hover{
     color: #444;
     height: 40px;
     line-height: 40px;
-    background-color: #F2F2F2;
+    background-color: white;
     font-size: 14px;
     font-weight: bold;
 }
@@ -90,12 +120,45 @@ a:hover{
 /* <-- Dashboard Details -> */
 .placesDiv{
 	overflow: auto;
+	height:85%;
 }
 
+.placesDiv::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+/* <-- place Details -> */
+.rightPlacesDiv{
+	margin-top: 10px;
+}
+
+.secondRow{
+	height: 74%;
+    margin-top: 23px;
+    /* overflow: auto; */
+    width: 100%;
+}
+.placeDiv{
+	height: 100%;
+    overflow: auto;
+    width: 60%;
+    float:left;
+}
+.weatherDiv{
+	float:right;
+	width:30%;
+}
+.buttonClass{
+	margin-top:10px;
+}
 /* <-- Footer Details -> */
 .footer{
-	height:9%;
-	background-color: #a3ec93;
+	height:6%;
+	background-color: #8a8b8a;
+	color:white;
 }
 .footerCenter{
 	text-align:center;
