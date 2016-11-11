@@ -72,12 +72,12 @@ Date of Travel:
             
                    
                     <div data-ng-show="weatherFlag" class="text-center text-warning"><strong>No Weather Details found</strong></div>
-                    <div class="col-md-6">
-                    <h4> {{placeDetails.location.city}} <small>timezone: {{weatherDetails.timezone}} </small></h4><br>
+                    <div class="col-md-12">
+                    <h4 class="climateCity"> {{placeDetails.location.city}} <small>timezone: {{weatherDetails.timezone}} </small></h4><br>
                     
-                    <img data-ng-src={{icon}} ></img>
+                    <div><img data-ng-src={{icon}} ></img>
                     <table class="table table-bordered">
-  <h4 class="temperature" >{{convertToCelsius(weatherDetails.currently.temperature)}}  &#8451;</h4>
+  <h4 class="temperature" >{{convertToCelsius(weatherDetails.currently.temperature)}}  &#8451;</h4></div>
   <tbody>
     <tr class="table-active">
       

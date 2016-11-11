@@ -149,10 +149,14 @@ a:hover{
 }
 .weatherDiv{
 	float:right;
-	width:30%;
+	width:40%;
 }
 .buttonClass{
 	margin-top:10px;
+}
+.climateCity{
+	width: 300px;
+    text-align: center;
 }
 /* <-- Footer Details -> */
 .footer{
