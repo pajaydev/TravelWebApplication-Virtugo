@@ -1,7 +1,7 @@
 travelApp.controller("homeController",function(NgMap,baseFactory,baseService,$location,$rootScope,$scope,$cookieStore){
 	
 	$scope.showMap=true;
-	if($location.path() == "/dashboard"){
+	/*if($location.path() == "/dashboard"){
 	   if($cookieStore != undefined && $cookieStore.get('userName') != ""){
 		   $rootScope.$$childHead.buttonEnable = false;
 	   }else{
@@ -14,7 +14,7 @@ travelApp.controller("homeController",function(NgMap,baseFactory,baseService,$lo
 	}else{
 		$cookieStore.put('userName',"");
 		$rootScope.$$childHead.buttonEnable = true;
-	}
+	}*/
 	  var vm = this;
 	  
 	  vm.types = "['establishment']";

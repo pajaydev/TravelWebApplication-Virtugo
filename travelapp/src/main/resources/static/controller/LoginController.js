@@ -1,6 +1,6 @@
 //Controller for login and signup corresponds to Login.html
 
-travelApp.controller("loginController",["$scope","$http","$location","$cookieStore","$route",function($scope,$http,$location,$cookieStore,$route){
+travelApp.controller("loginController",["$scope","$http","$location","$cookieStore","$route","baseService",function($scope,$http,$location,$cookieStore,$route,baseService){
 	
 	$scope.loginDetails = {email:"",password:""};
 	$scope.loginFlag = true;
@@ -29,8 +29,9 @@ travelApp.controller("loginController",["$scope","$http","$location","$cookieSto
 					
 					$scope.$parent.$$childHead.buttonEnable = false;
 					//$scope.apply();
-					$cookieStore.put('userName',response.data.userName);
-					alert($cookieStore.get('userName'));
+					baseService.setUserName(response.data.userName);
+					$cookieStore.put('userId',response.data.id);
+					//$cookieStore.put('Email',response.data.);
 					$location.path("/dashboard");
 					
 				},

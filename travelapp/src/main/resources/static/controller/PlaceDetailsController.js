@@ -1,4 +1,5 @@
-travelApp.controller("placeDetailsController",["$scope","baseService","baseFactory","$http",function($scope,baseService,baseFactory,$http){
+travelApp.controller("placeDetailsController",["$scope","baseService","baseFactory","$http",
+                                               "$cookieStore",function($scope,baseService,baseFactory,$http,$cookieStore){
 	alert("place controller");
 	var placeDetails = baseService.locationDetails;
 	var today = new Date();
@@ -82,13 +83,15 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
     
     $scope.saveHotel = function(value){
     	var weather = baseService.getweatherDetails();
+    	alert($cookieStore.get('userId'));
     	var data = {
     			"place": $scope.placeDetails.name,
-    			"address":value.location.address + value.location.city + value.location.country ,
+    			"address":value.location.address +", "+ value.location.city +", "+ value.location.country ,
     			"hotel": value.name,
     			"dateTravel":"",
     			"dateAdded":"",
-    			"climate": weather
+    			"climate": weather,
+    			"userId":$cookieStore.get('userId')
     			
     			
     	}

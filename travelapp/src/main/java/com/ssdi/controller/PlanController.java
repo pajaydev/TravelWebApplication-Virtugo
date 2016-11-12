@@ -44,8 +44,9 @@ public class PlanController {
 	}
 	
 	@RequestMapping(value = "/plan", method = RequestMethod.POST)
-	public List<Plan> GetPlans(@PathVariable Integer id){
-		return planService.getPlansById(id);
+	public List<Plan> GetPlans(@Validated(Create.class) @RequestBody Plan plan){
+		System.out.println("fetch plans************");
+		return planService.getPlansById(plan.getUserId());
 	}
 	
 	

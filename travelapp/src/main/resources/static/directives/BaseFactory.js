@@ -16,8 +16,8 @@ travelApp.factory('baseFactory',['$http','$resource',function($http,$resource){
 				    "&client_secret=" + "OP0UKBNHW22XAJX1O4NQ3O3FARYOUZEZG1YXTMXEWYBWXGOR" +
 				    " &v=20131124");
 		  };
-		  
-			baseFactory.getNearByHotels = function(location,place){
+	
+	baseFactory.getNearByHotels = function(location,place){
 				
 				  return $http.get(
 						    baseUrl +

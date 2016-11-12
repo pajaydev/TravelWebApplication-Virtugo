@@ -31,7 +31,7 @@ Date of Travel:
 
  <div class="placeDiv">
   <div data-ng-show="hotelFlag" class="text-center text-warning"><strong>No Nearby Hotels found</strong></div>
-    <div data-ng-show="hotelSuccess" class="text-success"><span class="glyphicon glyphicon-ok"></span><p>Hotel details has been saved</p></div>
+    <div data-ng-show="hotelSuccess" class="text-success"><span class="glyphicon glyphicon-ok"><p>Hotel details has been saved</p></span></div>
   <strong>Nearby Hotels:</strong>
 <ul class="list-group" data-ng-repeat="item in filteredPlaces">
                 <li class="list-group-item">
@@ -41,7 +41,7 @@ Date of Travel:
                                 title="{{item.venue.categories[0].shortName}}" class="venueIcon" />
                         </div>
                         <div class="col-xs-6 col-md-8">
-                            <a href="" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
+                            <a href="{{item.venue.url}}" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
                                 <h4 class="venueName">{{item.venue.name}}</h4>
                             </a>
                         </div>

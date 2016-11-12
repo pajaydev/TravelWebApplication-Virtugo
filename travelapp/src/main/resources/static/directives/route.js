@@ -34,13 +34,20 @@ travelApp.config(function($routeProvider, $httpProvider){
 	  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
-travelApp.run(function($rootScope, $location,$window){
+travelApp.run(function($rootScope, $location,$window,$cookieStore){
 $rootScope.$on('$routeChangeStart',function($scope,event,next,current){
-	alert("route changes");
-	if(event.$$route.originalPath == "/placeDetails"){
-		$scope.currentScope.$$childHead.buttonEnable = false;
+	
+	
+	if($location.path() == "/dashboard" || $location.path() == "/myplans" || $location.path() == "/placeDetails"){
+		   if($cookieStore != undefined && $cookieStore.get('userId') != ""){
+			   $scope.currentScope.$$childHead.buttonEnable = false;
+		   }else{
+			   alert("Hey Please Login Into Application!!");
+			   $location.path("/home");
+			   $scope.currentScope.$$childHead.buttonEnable = true;
+			   
+		   }
 	}
-    
 
 });
 });
@@ -53,11 +60,11 @@ travelApp.controller("baseController",["$scope","$location","$cookieStore",funct
 	$scope.buttonEnable = true;
 	$scope.login = function(){
 		 if($location.path() == "/login"){
-			 $cookieStore.put('userName',"");
+			 $cookieStore.put('userId',"");
 			 $route.reload();
 		 }else{
 		$location.path('/login');
-		$cookieStore.put('userName',"");}
+		$cookieStore.put('userId',"");}
 		 
 		 
 	}
