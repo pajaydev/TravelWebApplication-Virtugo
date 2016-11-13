@@ -20,12 +20,12 @@ Date of Travel:
                 ng-change="ChangeExpiryMinDate(AvailableDate)" placeholder="Enter Date" />
  <div class = "buttonClass">          
 <!-- <button type="submit" class="btn btn-default" ng-click="getHotels()" >View Hotels</button> -->
-<button type="submit" style="padding: 3px 10px;" class="btn btn-default" ng-click="getWeather()" >Climate Details</button>
-<button type="submit" style="padding: 3px 10px;" class="btn btn-default" ng-click="saveDetails()" >Save Details</button>
+<button type="submit" style="padding: 3px 10px;" class="btn btn-primary" ng-click="getWeather()" >Climate Details</button>
+<button type="submit" style="padding: 3px 10px;" class="btn btn-primary" ng-click="saveDetails()" >Save Details</button>
 </div>
 </div>
 </div>
-<div class="row secondRow">
+<div class="row secondRow borderColor">
 
 
 
@@ -75,9 +75,9 @@ Date of Travel:
                     <div class="col-md-12">
                     <h4 class="climateCity"> {{placeDetails.location.city}} <small>timezone: {{weatherDetails.timezone}} </small></h4><br>
                     
-                    <div><img data-ng-src={{icon}} ></img>
+                    <div style="margin-top:-35px"><img style="float:left" data-ng-src={{icon}} ></img>
                     <table class="table table-bordered">
-  <h4 class="temperature" >{{convertToCelsius(weatherDetails.currently.temperature)}}  &#8451;</h4></div>
+  <h3 class="temperature" >{{convertToCelsius(temperatureDetails.temperature)}}  &#8451;</h3></div>
   <tbody>
     <tr class="table-active">
       
@@ -113,7 +113,7 @@ Date of Travel:
     <tr>
       
       <td>Summary</td>
-      <td>{{weatherDetails.daily.data[0].summary}}</td>
+      <td>{{temperatureDetails.summary}}</td>
       
     </tr>
     

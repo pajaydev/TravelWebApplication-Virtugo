@@ -6,7 +6,7 @@
 }
 body,html{
 	    font-family: 'Roboto', 'sans-serif' !important;
-	    font-size: 14px !important;
+	    font-size: 16px !important;
 	    background:#fff;
 	    height:100%;
 	    overflow:hidden;
@@ -35,12 +35,12 @@ a{
 
 a:hover{
 	top: 0;
-    background-color: grey !important;
-    color: #FFF;
+        color: #23527c;
+    text-decoration: underline;
 }
 
 .mainWrapper{
-	height:84%;
+	height:86%;
 	margin-top:-20px;
 	background-color:#f0eeee;	
 }
@@ -52,6 +52,13 @@ a:hover{
 .navbar-default .navbar-nav>li>a {
 	color:white !important;
 }
+
+.borderColor{
+    border-style: solid;
+    border-width: 1px 1px 2px 1px;
+    border-color: #cfcfcf;}
+    
+
 
 /* <-- home Page -> */
 
@@ -158,6 +165,12 @@ a:hover{
 	width: 300px;
     text-align: center;
 }
+.temperature{
+	float:left;
+	margin-top:10px;
+}
+
+
 /* <-- Footer Details -> */
 .footer{
 	height:6%;

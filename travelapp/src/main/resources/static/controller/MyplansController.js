@@ -1,6 +1,6 @@
 travelApp.controller("myplansController",["$scope","baseService","baseFactory","$cookieStore","$http",
                                           function($scope,baseService,baseFactory,$cookieStore,$http){
-	alert("My plans controller");
+	
 	$scope.userName = baseService.getUserName();
 	var data = {"userId":$cookieStore.get('userId')}
 	var request = {
@@ -23,7 +23,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 			});
 	
 	$scope.sendEmail = function(){
-		alert("send Email");
+		
 		var data = {"userId":$cookieStore.get('userId')}
 		var request = {
 				method : 'POST',
@@ -35,7 +35,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 			}
 		$http(request).then(
 				function(response) {
-					alert("my plans success");
+					
 					$scope.myPlaces = response.data;
 					
 					
@@ -46,6 +46,8 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 		
 	}
 	
-	
-	
+
+	$scope.convertToCelsius = function(temp) {
+  	  return Math.round((temp - 32) * 0.5);
+  	};
 }]);

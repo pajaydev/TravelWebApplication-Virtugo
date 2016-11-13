@@ -82,7 +82,7 @@ travelApp.controller("baseController",["$scope","$location","$cookieStore",funct
 	 $scope.logOut = function(){
 		  
 		   $scope.buttonEnable = true;
-		   $cookieStore.put('userName',"");
+		   $cookieStore.put('userId',"");
 		   $location.path('/home');
 	   }
 	 

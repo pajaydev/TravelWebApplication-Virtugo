@@ -3,15 +3,15 @@
   
     
     <div class="col-md-3 sidenavright">
-    
- <ng-map zoom="11" center='current-position'
+ <div class="borderColor">
+ <ng-map  zoom="11" center='current-position'
     geo-fallback-center="[35.2271, -80.8431]"
     geo-callback="vm.callbackFunc('you')"><marker position="{{vm.address}}" title="{{vm.address}}"></marker>
     <marker position="current-position" title="{{vm.address}}">
     </marker>
  
      <marker ng-repeat="p in filteredPlaces"  position="{{p.venue.location.address}}"  title="{{p.venue.name}}"></marker></ng-map>
-    </div>
+    </div></div>
     
 
     

@@ -30,13 +30,13 @@
     on-place-changed="vm.placeChanged()" placeholder="Enter the location to search.." /> <br/>
     
     <!--  Showing Map for Guest User -->
-
+<div class="borderColor">
  <ng-map style="margin-top:20px" zoom="11" center='current-position'
     geo-fallback-center="[35.2271, -80.8431]"
     geo-callback="vm.callbackFunc('you')"><marker  position="{{vm.address}}" title="{{vm.address}}"></marker>
     <marker  position="current-position" title="{{vm.address}}">
     <marker ng-repeat="p in filteredPlaces"  position="{{p.venue.location.address}}"  title="{{p.venue.name}} (please login to view details)"></marker></ng-map>
-   </ng-map> 
+   </ng-map> </div>
 </div>
 </div>
 </div>
