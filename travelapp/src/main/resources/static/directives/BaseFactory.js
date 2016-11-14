@@ -32,7 +32,7 @@ travelApp.factory('baseFactory',['$http','$resource',function($http,$resource){
 				  
 				  
      baseFactory.getWeatherDetails = function(place,date){
-    	     alert("factoryyyyyyyyyyyyy");
+    	    
 			 return $http.jsonp("https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
 					 place.lat+","+place.lng+","+date+"T00:00:00?callback=JSON_CALLBACK");
     	     

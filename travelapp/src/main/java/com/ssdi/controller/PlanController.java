@@ -33,12 +33,16 @@ public class PlanController {
 	
 	@RequestMapping(value = "/savePlan", method = RequestMethod.POST)
 	public Plan AddPlans(@Validated(Create.class) @RequestBody Plan plan) {
-		System.out.println("Add plans************");
-		System.out.println("Received Plan as: \nPlace " + plan.getAddress() + "\nCountry: ");
-		LOGGER.debug("Received Plan as: \nPlace " + plan.getAddress() + "\nCountry: ");
 		/*if(null != plan.getDateTravel() || plan.getDateTravel().toString() == ""){*/
-			plan.setDateTravel(new java.sql.Date(new Date().getTime()));
 		
+		if(plan.getDateTravel() != null || plan.getDateTravel().toString() != ""){
+			System.out.println("Inside If"+plan.getDateTravel());
+			plan.setDateTravel(new java.sql.Date(plan.getDateTravel().getTime()));
+		//plan.setDateTravel(new java.sql.Date(new Date().getTime()));
+		}else{
+			System.out.println("Else loop"+plan.getDateTravel());
+			plan.setDateTravel(new java.sql.Date(new Date().getTime()));
+		}
 		plan.setDateAdded(new java.sql.Date(new Date().getTime()));
 		return planService.addPlan(plan);
 	}

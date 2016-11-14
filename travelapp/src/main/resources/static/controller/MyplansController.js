@@ -13,7 +13,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 		}
 	$http(request).then(
 			function(response) {
-				alert("my plans success");
+				
 				$scope.myPlaces = response.data;
 				
 				

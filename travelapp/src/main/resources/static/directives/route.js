@@ -70,12 +70,12 @@ travelApp.controller("baseController",["$scope","$location","$cookieStore",funct
 	}
 	
 	$scope.explore = function(){
-		alert("Explore");
+		
 		$location.path('/dashboard');
 	}
 	
 	$scope.myplans = function(){
-		alert("My plans");
+		
 		$location.path('/myplans');
 	}
 	

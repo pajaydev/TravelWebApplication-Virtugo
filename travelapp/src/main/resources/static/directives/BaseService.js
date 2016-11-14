@@ -1,8 +1,15 @@
 travelApp.service("baseService",function(){
 	var location = "";
 	var userName = "";
+	var date = "";
 	var locationDetails = {};
 	var weatherDetails = "";
+	this.setDate = function(date){
+		this.date = date;
+	}
+	this.getDate = function(){
+		return this.date;
+	}
 	this.setUserName = function(userName){
 		this.userName = userName;
 	}

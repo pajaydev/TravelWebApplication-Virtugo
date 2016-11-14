@@ -4,7 +4,7 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
 	var placeDetails = baseService.locationDetails;
 	var today = new Date();
 	$scope.icon = "";
-	//alert(placeDetails);
+	
 	$scope.placeDetails = placeDetails;
 	 $scope.dateFormat = 'yyyy-MM-dd';
 	$scope.today = new Date();
@@ -34,8 +34,7 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
 		  $scope.temperatureDetails = result.data.hourly.data[hour];
 		  var icon = temperatureDetails.icon;
 		  $scope.icon = weatherIcon(icon);}, function (error) {
-		        //alert("error"+error.message);
-			  $scope.weatherFlag = true;
+		  $scope.weatherFlag = true;
 		    });
 	
 	
@@ -55,6 +54,7 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
     	
     	//alert($scope.today);
     	//alert(date);
+    	      baseService.setDate(date);
               baseFactory.getWeatherDetails($scope.placeDetails.location,date).then(function (result,status) {
 			 
 			  $scope.weatherDetails = result.data;
@@ -86,12 +86,13 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
     
     $scope.saveHotel = function(value){
     	var weather = baseService.getweatherDetails();
-    	
+    	var date = baseService.getDate();
+    	alert(date);
     	var data = {
     			"place": $scope.placeDetails.name,
     			"address":value.location.address +", "+ value.location.city +", "+ value.location.country ,
     			"hotel": value.name,
-    			"dateTravel":$scope.today,
+    			"dateTravel":date,
     			"dateAdded":"",
     			"climate": weather,
     			"userId":$cookieStore.get('userId')
