@@ -53,6 +53,10 @@ public class PlanController {
 		return planService.getPlansById(plan.getUserId());
 	}
 	
-	
-	
+	@RequestMapping(value = "/deletePlace/{id}", method = RequestMethod.POST)
+	public void deletePlace(@PathVariable int id,@Validated(Create.class) @RequestBody Plan plan){
+		System.out.println("delete plans************");
+		planService.deletePlan(id);
+	}
+			
 }

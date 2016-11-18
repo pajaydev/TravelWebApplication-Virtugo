@@ -15,7 +15,7 @@
                 <th>Temperature</th>
                 <th>DateTravel</th>
                 <th>Planned Date</th>
-                
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +40,11 @@
                 <td>{{ place.dateAdded }}
                 </td>
                  
-                
+                <td>
+                <button type="submit" ng-click="deletePlace(place.placeId)" class="btn btn-default btn-sm">
+          			<span class="glyphicon glyphicon-remove"></span>
+        		</button>
+                </td>
             </tr>
         </tbody>
     </table>
