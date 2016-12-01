@@ -35,30 +35,35 @@ travelApp.factory('baseFactory',['$http','$resource',function($http,$resource){
     	    
 			 return $http.jsonp("https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
 					 place.lat+","+place.lng+","+date+"T00:00:00?callback=JSON_CALLBACK");
-    	     
-    	   /*return $http({
-    	         url: "https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
-					 place.lat+","+place.lng+",2016-11-06T00"+":00:00",
-    	         method: "GET",
-    	         withCredentials: true,
-    	         headers: {
-    	                     'Content-Type': 'application/json; charset=utf-8'
-    	         }
-    	     });*/
-    	   /*  return $resource("https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
-					 place.lat+","+place.lng+",2016-11-06T00"+":00:00",
-    	    	      {
-    	    	        
-    	    	        mode: 'json',
-    	    	        callback: 'JSON_CALLBACK',
-    	    	        units: 'metric',
-    	    	        lang: 'en'
-    	    	      });*/
-    	     
-    	    /* return $http.jsonp(
-    	    		 "https://api.darksky.net/forecast/5365b9aff94fd5b101af6c5f0cbfa93b/"+
-					 place.lat+","+place.lng+",2016-11-06T00:00:00",{jsonpCallbackParam: 'callback'});*/
+    	  
 	  };
+	  
+	  baseFactory.getReviews = function(data){
+		  var request = {
+					method : 'POST',
+					url : '/getReview',
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					data : data
+				}
+			return $http(request);
+		 
+		  };
+		  
+		  baseFactory.postReviews = function(data){
+			  alert("post reviews in directive");
+			  var request = {
+						method : 'POST',
+						url : '/createReview',
+						headers : {
+							'Content-Type' : 'application/json'
+						},
+						data : data
+					}
+				return $http(request);
+			 
+			  };
 	
 	baseFactory.Session = function(username){
 		return{

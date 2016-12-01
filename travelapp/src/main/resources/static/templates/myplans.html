@@ -26,9 +26,10 @@
             </tr>
             <tr data-ng-repeat="place in myPlaces">
                 <td>
-                    <a target="_blank" data-ng-href="https://foursquare.com/v/{{place.venueID}}">{{ place.place }}</a>
+                    <a target="_blank" data-ng-href="placeUrl">{{ place.place }}</a>
                 </td>
-                <td>{{ place.hotel }}
+                <td>
+                 <a target="_blank" data-ng-href="hotelUrl">{{ place.hotel }}</a>
                 </td>
                 <td>{{ place.address }}
                 </td>

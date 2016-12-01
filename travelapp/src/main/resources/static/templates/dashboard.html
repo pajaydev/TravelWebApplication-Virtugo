@@ -57,7 +57,8 @@
                             <p class="text-warning"><small>{{(item.venue.location.address != null) && item.venue.location.address}} - {{item.venue.categories[0].shortName}}</small></p>
                             <p>{{item.tips[0].text}}</p>
                             <hr class="seperator" />
-                            <a href="" data-ng-click="viewDetails(item.venue)">View Details</a>
+                            <a href="" data-ng-click="viewDetails(item.venue,'details')">View Details</a>
+                            <a href="" style="padding-left:325px" data-ng-click="viewDetails(item.venue,'reviews')">View Reviews</a>
                         </div>
                         <div class="col-xs-4 col-md-3">
                             <a href="" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">

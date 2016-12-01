@@ -2,6 +2,14 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
                                           function($scope,baseService,baseFactory,$cookieStore,$http){
 	
 	$scope.userName = baseService.getUserName();
+	var placeDetails = baseService.getLocationDetails();
+	if(placeDetails != undefined && placeDetails.url != undefined){
+		alert(placeDetails.url);
+		$scope.placeUrl = placeDetails.url;
+	}
+	if(baseService.getHotelUrl() != undefined){
+		$scope.hotelUrl = baseService.getHotelUrl(); 
+	}
 	var data = {"userId":$cookieStore.get('userId')}
 	var request = {
 			method : 'POST',

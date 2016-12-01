@@ -77,9 +77,10 @@ travelApp.controller("homeController",function(NgMap,baseFactory,baseService,$lo
 	  
 	    //To View Place details
 	    
-	    $scope.viewDetails = function(value){
+	    $scope.viewDetails = function(value,flag){
 	    	
 	    	baseService.setLocationDetails(value);
+	    	baseService.setFlag(flag);
 	    	$location.path("/placeDetails");
 	    }
 	  

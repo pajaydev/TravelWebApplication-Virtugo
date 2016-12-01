@@ -4,12 +4,27 @@ travelApp.service("baseService",function(){
 	var date = "";
 	var locationDetails = {};
 	var weatherDetails = "";
+	var hotelUrl = "";
+	var flag ="";
 	this.setDate = function(date){
 		this.date = date;
 	}
 	this.getDate = function(){
 		return this.date;
 	}
+	this.setFlag = function(flag){
+		this.flag = flag;
+	}
+	this.getFlag = function(){
+		return this.flag;
+	}
+	this.setHotelUrl = function(hotelUrl){
+		this.hotelUrl = hotelUrl;
+	}
+	this.getHotelUrl = function(){
+		return this.hotelUrl;
+	}
+	
 	this.setUserName = function(userName){
 		this.userName = userName;
 	}
@@ -20,13 +35,13 @@ travelApp.service("baseService",function(){
 		this.location = location;
 	}
 	this.getLocation = function(){
-		return location;
+		return this.location;
 	}
 	this.setLocationDetails = function(value){
 		this.locationDetails = value;
 	}
 	this.getLocationDetails = function(){
-		return locationDetails;
+		return this.locationDetails;
 	}
 	this.setWeatherDetails = function(value){
 		this.weatherDetails = value;

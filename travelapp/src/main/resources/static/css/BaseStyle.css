@@ -27,7 +27,10 @@ body,html{
 .textCenter{
 	text-align:center;
 }
-
+.zeroMargin{
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
 a{
  text-decoration: none !important;	
  cursor: pointer;
@@ -153,6 +156,33 @@ a:hover{
     overflow: auto;
     width: 60%;
     float:left;
+}
+.reviews{
+	height: 100%;
+    overflow: auto;
+    width: 60%;
+    float:left;
+}
+.reviewstab{
+	height:30px;
+}
+.reviews .reviewstab li{
+	    list-style: none;
+    float: left;
+    position: relative;
+    top: 0;
+    padding: 5px;
+    white-space: nowrap;
+    background-color: #8a8b8a;
+    margin-bottom: -1px;
+    border: 1px solid #d3d3d3;
+}
+.ul-class{
+	    width: 80%;
+    margin-left: 20px;
+}
+.margin-left{
+	margin-left:10px;
 }
 .weatherDiv{
 	float:right;
