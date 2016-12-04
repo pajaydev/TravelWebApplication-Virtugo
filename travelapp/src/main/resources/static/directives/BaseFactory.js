@@ -64,6 +64,19 @@ travelApp.factory('baseFactory',['$http','$resource',function($http,$resource){
 				return $http(request);
 			 
 			  };
+			  baseFactory.shareEmail = function(data){
+				
+				  var request = {
+							method : 'POST',
+							url : '/shareEmail',
+							headers : {
+								'Content-Type' : 'application/json'
+							},
+							data : data
+						}
+					return $http(request);
+				 
+				  };
 	
 	baseFactory.Session = function(username){
 		return{

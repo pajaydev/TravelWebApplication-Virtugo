@@ -39,7 +39,8 @@ public class Plan {
 	
 	private Integer userId;
 	
-	
+	@Transient
+	private String emailId;
 	
 	public Plan(){
 	}
@@ -168,6 +169,20 @@ public class Plan {
 	 */
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	/**
+	 * @return the emailId
+	 */
+	public String getEmailId() {
+		return emailId;
+	}
+
+	/**
+	 * @param emailId the emailId to set
+	 */
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 		

@@ -43,7 +43,7 @@ travelApp.controller("loginController",["$scope","$http","$location","$cookieSto
 	//Function used to register
 	$scope.register = function(){
 		
-		$scope.registerDetails.userName = $scope.registerDetails.firstName + $scope.registerDetails.lastName;
+		$scope.registerDetails.userName = $scope.registerDetails.firstName+" "+ $scope.registerDetails.lastName;
 		var request = {
 				method : 'POST',
 				url : '/registration',

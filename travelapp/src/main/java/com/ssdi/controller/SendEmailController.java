@@ -7,8 +7,7 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +33,7 @@ public class SendEmailController {
 	//PlanService planService;
 	//UserService userService;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(PlanController.class);
+	//private static final Logger LOGGER = LoggerFactory.getLogger(PlanController.class);
 	
 	@Autowired
 	public SendEmailController(EmailService emailService) {
@@ -50,7 +49,7 @@ public class SendEmailController {
 	
 	@RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
 	public String register(@Validated(Create.class) @RequestBody Plan plan) throws MessagingException {
-		System.out.println("*******Inside Send Email*********");
+		System.out.println("*******Inside Send Email to me*********");
 		System.out.println("Email"+plan.getUserId());
 		StringBuffer body = new StringBuffer();
 		User user = userService.findOne(plan.getUserId());
@@ -60,17 +59,59 @@ public class SendEmailController {
 		System.out.println("List"+list.size());
 		
 		for(Plan planDetails:list){
-			body.append("Plan  :"+planDetails.getPlace());
-			body.append("Address  :"+planDetails.getAddress());
-			body.append("Temperature  :"+planDetails.getClimate());
-			body.append("Hotel   :"+planDetails.getHotel());
-			body.append("Date Added   :"+planDetails.getDateAdded());
-			body.append("Date of Travel   :"+planDetails.getDateTravel());
+			body.append("Dear <b>"+ user.getUserName()+"</b>");
+			body.append("<br />");
+			body.append("Please find your travel plans below");
+			body.append("<br />");
+			body.append("<br />");
+			body.append("<b>Plan  : </b>"+planDetails.getPlace());
+			body.append(" <b>Address  :</b> "+planDetails.getAddress());
+			body.append(" <b>Temperature  :</b> "+planDetails.getClimate());
+			body.append(" <b>Hotel   :</b> "+planDetails.getHotel());
+			body.append(" <b>Date Added  :</b>  "+planDetails.getDateAdded());
+			body.append(" <b>Date of Travel   :</b> "+planDetails.getDateTravel());
+			body.append("<br />");
+			body.append("<br />");
 		}
 		String subject = "Your Plan Confirmation";
 	    
 		
 		return emailService.sendEmail(email,subject,body.toString());
+	}
+	
+	@RequestMapping(value = "/shareEmail", method = RequestMethod.POST)
+	public String  shareEmail(@Validated(Create.class) @RequestBody Plan plan) throws MessagingException {
+		System.out.println("*******Inside Send Email*********");
+		System.out.println("Email**********"+ plan.getEmailId());
+		//String mail = (String) EmailId.subSequence(12, EmailId.length()-2);
+		String mail = plan.getEmailId();
+		System.out.println(mail);
+		StringBuffer body = new StringBuffer();
+		User user = userService.findOne(plan.getUserId());
+		System.out.println(plan.getUserId());
+		
+		List<Plan> list = planService.getPlansById(plan.getUserId());
+		System.out.println("List"+list.size());
+		
+		for(Plan planDetails:list){
+			body.append("Hello!"+" Your friend "+user.getUserName()+" has shared their plans with you!");
+			body.append("<br />");
+			body.append("Please find the travel plans below");
+			body.append("<br />");
+			body.append("<br />");
+			body.append("<b>Plan  : </b>"+planDetails.getPlace());
+			body.append(" <b>Address  :</b> "+planDetails.getAddress());
+			body.append(" <b>Temperature  :</b> "+planDetails.getClimate());
+			body.append(" <b>Hotel   :</b> "+planDetails.getHotel());
+			body.append(" <b>Date Added  :</b>  "+planDetails.getDateAdded());
+			body.append(" <b>Date of Travel   :</b> "+planDetails.getDateTravel());
+			body.append("<br />");
+			body.append("<br />");
+		}
+		String subject = "Your Plan Confirmation";
+	    
+		
+		return emailService.sendEmail(mail, subject, body.toString());
 	}
     
 	

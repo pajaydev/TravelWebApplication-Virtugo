@@ -1,5 +1,5 @@
-travelApp.controller("myplansController",["$scope","baseService","baseFactory","$cookieStore","$http",
-                                          function($scope,baseService,baseFactory,$cookieStore,$http){
+travelApp.controller("myplansController",["$scope","baseService","baseFactory","$cookieStore","$http",'$uibModal','$log',
+                                          function($scope,baseService,baseFactory,$cookieStore,$http,$uibModal,$log){
 	
 	$scope.userName = baseService.getUserName();
 	var placeDetails = baseService.getLocationDetails();
@@ -80,4 +80,18 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 	$scope.convertToCelsius = function(temp) {
   	  return Math.round((temp - 32) * 0.5);
   	};
+  	
+  	
+  	 $scope.openPopup = function () {
+         var template="";
+        
+
+  		  $uibModal.open({
+  	            templateUrl: "templates/popup.html",
+  	            controller: 'popupController',
+  	          scope: $scope
+  	        });
+  	        };
+  
+
 }]);
