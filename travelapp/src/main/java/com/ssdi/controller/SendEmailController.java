@@ -42,6 +42,9 @@ public class SendEmailController {
 		//this.planService = planService;
 		
 	}
+	public SendEmailController() {
+		
+	}
 	@Autowired
 	PlanService planService;
 	@Autowired
@@ -113,8 +116,12 @@ public class SendEmailController {
 		
 		return emailService.sendEmail(mail, subject, body.toString());
 	}
-    
 	
+		public void setServices(PlanService planService, UserService userService, EmailService emailService){
+			this.emailService = emailService;
+			this.planService = planService;
+			this.userService = userService;
+		}
 	public List<Plan> constructEmail(Plan plan){
 		
 		

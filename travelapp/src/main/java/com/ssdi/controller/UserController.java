@@ -1,4 +1,3 @@
-
 package com.ssdi.controller;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.ssdi.Authenticate;
 import com.ssdi.Create;
 import com.ssdi.entity.User;
+import com.ssdi.service.ReviewService;
 import com.ssdi.service.UserService;
 
 @RestController
@@ -22,13 +22,15 @@ public class UserController {
 
 	UserService userService;
 	
-	
 	@Autowired
 	public UserController(UserService userService) {
 		super();
 		this.userService = userService;
 	}
-
+	
+    public UserController(){
+    	
+    }
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public User register(@Validated(Create.class) @RequestBody User user) {
 		System.out.println("*******Inside registration*********");
@@ -55,5 +57,7 @@ public class UserController {
 			return user;
 		}
 	}
-
+	public void setService(UserService service) {
+		this.userService = service;
+	}
 }

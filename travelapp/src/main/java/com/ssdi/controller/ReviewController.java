@@ -20,13 +20,16 @@ public class ReviewController {
 	
 	ReviewService reviewService;
 	
-	
 	@Autowired
 	public ReviewController(ReviewService reviewService) {
 		super();
 		this.reviewService = reviewService;
 	}
-	
+    public ReviewController() {
+	}
+    public void setReviewService(ReviewService service) {
+		this.reviewService = service;
+	}
 	@RequestMapping(value = "/createReview", method = RequestMethod.POST)
 	public Review createReview(@Validated(Create.class) @RequestBody Review review) {
 		/*if(null != plan.getDateTravel() || plan.getDateTravel().toString() == ""){*/
