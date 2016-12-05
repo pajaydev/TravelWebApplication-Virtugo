@@ -18,7 +18,19 @@ public class ReviewService {
 			super();
 			this.reviewRepository = myReviewRepository;
 		}
-		
+		@Autowired
+		PlanService planService;
+		@Autowired
+		UserService userService;
+		EmailService emailService;
+        public ReviewService() {
+			
+		}
+        public void setServices(PlanService planService, UserService userService, EmailService emailService){
+    		this.emailService = emailService;
+    		this.planService = planService;
+    		this.userService = userService;
+    	}
 		public List<Review> getReviewsByPlace(String place) {
 			List<Review> reviews = reviewRepository.findReviewsByPlace(place);
 			return reviews;
@@ -30,5 +42,8 @@ public class ReviewService {
 		
 		public void deleteReview(int Id){
 			reviewRepository.delete(Id);
+		}
+		public void setReviewRepository(ReviewRepository repository) {
+			this. reviewRepository = repository;
 		}
 }

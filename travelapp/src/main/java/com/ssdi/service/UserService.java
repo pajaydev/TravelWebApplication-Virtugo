@@ -16,7 +16,15 @@ public class UserService {
 		super();
 		this.userRepository = userRepository;
 	}
-
+	
+	 public UserService() {
+			
+		}
+	 
+	public void setReviewRepository(UserRepository repository) {
+		this.userRepository = repository;
+	}
+   
 	public User createUser(User user) {
 		user = userRepository.save(user);
 		return user;

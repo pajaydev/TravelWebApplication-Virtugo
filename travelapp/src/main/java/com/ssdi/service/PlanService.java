@@ -17,6 +17,9 @@ public class PlanService {
 		super();
 		this.planRepository = myPlanRepository;
 	}
+    public PlanService() {
+		
+	}
 	
 	public List<Plan> getPlansById(Integer id) {
 		List<Plan> plans = planRepository.findPlansByUserId(id);
@@ -29,5 +32,8 @@ public class PlanService {
 	
 	public void deletePlan(int id){
 		planRepository.delete(id);
+	}
+	public void setRepository(PlanRepository repository) {
+		this.planRepository = repository;
 	}
 }

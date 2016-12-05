@@ -30,7 +30,12 @@ public class PlanController {
 		super();
 		this.planService = planService;
 	}
-	
+    public PlanController(){
+		
+	}
+    public void setPlanService(PlanService planService){
+		this.planService = planService;
+	}
 	@RequestMapping(value = "/savePlan", method = RequestMethod.POST)
 	public Plan AddPlans(@Validated(Create.class) @RequestBody Plan plan) {
 		/*if(null != plan.getDateTravel() || plan.getDateTravel().toString() == ""){*/

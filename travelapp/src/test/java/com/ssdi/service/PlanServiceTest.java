@@ -1,26 +1,74 @@
 package com.ssdi.service;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import java.util.ArrayList;
 import java.util.List;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.ssdi.TravelWebAppApplication;
+import org.junit.runners.JUnit4;
+import org.mockito.Mock;
 import com.ssdi.entity.Plan;
-import com.ssdi.service.PlanService;
+import com.ssdi.repository.PlanRepository;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = TravelWebAppApplication.class)
+@RunWith(JUnit4.class)
 public class PlanServiceTest {
 
-	@Autowired
+	@Mock
+	private PlanRepository planRepository;	
+	
+	private Plan plan;
+	private Plan plan2;
 	private PlanService planService;
+	private List<Plan> plans;
 	
+	@Before
+	public void setup() throws Exception {
+		
+		plans = new ArrayList<Plan>();
+		planService = new PlanService();
+		planRepository = mock(PlanRepository.class);
+		planService.setRepository(planRepository);
+		plan = new Plan();
+		plan.setUserId(1);
+		
+		plan2 = new Plan();
+		plan2.setUserId(2);
+		plan2.setPlace(null);
+		
+		when(planRepository.findPlansByUserId(plan.getUserId())).thenReturn(new ArrayList<Plan>());
+		when(planRepository.findPlansByUserId(plan2.getUserId())).thenReturn(new ArrayList<Plan>());
+		when(planRepository.save(plan)).thenReturn(plan);
+		when(planRepository.save(plan2)).thenReturn(null);
+		
+	}
 	
+	@Test
+	public void testGetPlansById() {
+		when(planRepository.findPlansByUserId(plan.getUserId())).thenReturn(plans);
+		assertEquals(plans, planService.getPlansById(plan.getUserId()));
+	}
 	
+	@Test
+	public void testAddPlan() {
+		assertEquals(plan, planService.addPlan(plan));
+	}
+	
+	@Test
+	public void testInvalidGetPlansById() {
+		when(planRepository.findPlansByUserId(plan.getUserId())).thenReturn(plans);
+		when(planRepository.findPlansByUserId(plan2.getUserId())).thenReturn(plans);
+		assertEquals(planService.getPlansById(plan.getUserId()), planService.getPlansById(plan.getUserId()));
+	}
+	
+	@Test
+	public void testInvalidAddPlan() {
+		assertEquals(null, planService.addPlan(plan2));
+	}
+	
+	/*
 	@Test
 	public void testInvalidGetPlansByUserId() throws Exception {
 		boolean condition = false;
@@ -31,7 +79,7 @@ public class PlanServiceTest {
 	}
 	
 	@Test
-	public void testValidAddMovie() throws Exception {
+	public void testValidAddPlan() throws Exception {
 		boolean condition = false;
 		Plan plan = new Plan();
 		java.sql.Date date = java.sql.Date.valueOf( "2010-01-31" );
@@ -62,4 +110,5 @@ public class PlanServiceTest {
 		}
 		assertTrue(condition);
 	}
+*/
 }
