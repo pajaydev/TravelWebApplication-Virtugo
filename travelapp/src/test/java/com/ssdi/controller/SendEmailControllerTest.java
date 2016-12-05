@@ -52,6 +52,7 @@ public class SendEmailControllerTest {
 		
 		user.setEmail("aa@a.com");
 		user.setId(1);
+		user.setUserName("abc");
 	
 		plan.setAddress("India");
 		plan.setClimate("Winter");
@@ -63,12 +64,19 @@ public class SendEmailControllerTest {
 		plans.add(plan);
 		
 		StringBuffer body = new StringBuffer();
-		body.append("Plan  :"+plan.getPlace());
-		body.append("Address  :"+plan.getAddress());
-		body.append("Temperature  :"+plan.getClimate());
-		body.append("Hotel   :"+plan.getHotel());
-		body.append("Date Added   :"+plan.getDateAdded());
-		body.append("Date of Travel   :"+plan.getDateTravel());
+		body.append("Dear <b>"+ user.getUserName()+"</b>");
+		body.append("<br />");
+		body.append("Please find your travel plans below");
+		body.append("<br />");
+		body.append("<br />");
+		body.append("<b>Plan  : </b>"+plan.getPlace());
+		body.append(" <b>Address  :</b> "+plan.getAddress());
+		body.append(" <b>Temperature  :</b> "+plan.getClimate());
+		body.append(" <b>Hotel   :</b> "+plan.getHotel());
+		body.append(" <b>Date Added  :</b>  "+plan.getDateAdded());
+		body.append(" <b>Date of Travel   :</b> "+plan.getDateTravel());
+		body.append("<br />");
+		body.append("<br />");
 		
 		String subject = "Your Plan Confirmation";
 		try {
@@ -93,6 +101,8 @@ public class SendEmailControllerTest {
 			e.printStackTrace();
 		}
 	}
+	
+	
 		
 }
 
