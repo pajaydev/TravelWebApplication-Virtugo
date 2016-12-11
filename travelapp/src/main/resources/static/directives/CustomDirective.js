@@ -1,6 +1,7 @@
 travelApp.directive('ratings',function(){
 	alert("ratingssss");
 	return{
+		
 		scope:{
 			rating: '=',
 			maxRating: '@',
@@ -8,7 +9,7 @@ travelApp.directive('ratings',function(){
 	        },
 	        restrict: 'EA',
 	        template :  "<div style='display: inline-block; margin: 0px; padding: 0px; cursor:pointer;' ng-repeat='idx in maxRatings track by $index'> \
-                <img ng-src='{{(rating <= $index) && \"http://www.codeproject.com/script/ratings/images/star-empty-lg.png\" || \"http://www.codeproject.com/script/ratings/images/star-fill-lg.png\"}}' \
+                <img ng-src='{{(($index+1) <= rating) && \"http://www.codeproject.com/script/ratings/images/star-fill-lg.png\" || \"http://www.codeproject.com/script/ratings/images/star-empty-lg.png\"}}' \
                 ng-Click='isolatedClick($index + 1)'></img></div>",
 	       
 	

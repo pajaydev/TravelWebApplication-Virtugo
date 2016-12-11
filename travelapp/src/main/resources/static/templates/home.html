@@ -18,25 +18,33 @@
 <div class="row fullHeight">
 <div class="col-md-12">
   
-
+<div ng-show="notify" class="alert alert-info">
+  <strong>Hi!</strong> Please login to view the details.
+</div>
 
 <div style="margin-top:20px">
-    
-  <input class="searchClass" style="width: 400px;
+  <!--  Search box for Guest User -->
+<form class="form-horizontal fullHeight">
+ <div class="form-group">  
+  <input type="text" class="searchClass" style="width: 400px;
     align-items: center;
     margin-left: 300px;" places-auto-complete size=80
     ng-model="vm.address"
     types="{{types}}"
-    on-place-changed="vm.placeChanged()" placeholder="Enter the location to search.." /> <br/>
+    on-place-changed="vm.placeChanged()" placeholder="Enter the location to search.." /> <br/></div></form>
     
     <!--  Showing Map for Guest User -->
 <div class="borderColor">
  <ng-map style="margin-top:20px" zoom="11" center='current-position'
     geo-fallback-center="[35.2271, -80.8431]"
-    geo-callback="vm.callbackFunc('you')"><marker  position="{{vm.address}}" title="{{vm.address}}"></marker>
-    <marker  position="current-position" title="{{vm.address}}">
-    <marker ng-repeat="p in filteredPlaces"  position="{{p.venue.location.address}}"  title="{{p.venue.name}} (please login to view details)"></marker></ng-map>
+    geo-callback="vm.callbackFunc('you')"><marker on-click="func()" position="{{vm.address}}" title="{{vm.address}}"></marker>
+    <marker  position="current-position" title="{{vm.address}}" on-click="func()">
+    <custom-marker ng-repeat="p in filteredPlaces"  on-click="func()" position="{{p.venue.location.address}}"  title="{{p.venue.name}} (please login to view details)">
+    </custom-marker>
+    
+    </ng-map>
    </ng-map> </div>
+   <div  ng-repeat="p in filteredPlaces">{{p}}</div>
 </div>
 </div>
 </div>

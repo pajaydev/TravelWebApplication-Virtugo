@@ -45,7 +45,8 @@ a:hover{
 .mainWrapper{
 	height:86%;
 	margin-top:-20px;
-	background-color:#f0eeee;	
+	background-color:#f0eeee;
+	overflow:auto;	
 }
 
 .fullHeight{

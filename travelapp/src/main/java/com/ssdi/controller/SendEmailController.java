@@ -60,9 +60,9 @@ public class SendEmailController {
 		
 		List<Plan> list = planService.getPlansById(plan.getUserId());
 		System.out.println("List"+list.size());
-		
-		for(Plan planDetails:list){
-			body.append("Dear <b>"+ user.getUserName()+"</b>");
+	
+		/*for(Plan planDetails:list){
+			
 			body.append("<br />");
 			body.append("Please find your travel plans below");
 			body.append("<br />");
@@ -75,7 +75,37 @@ public class SendEmailController {
 			body.append(" <b>Date of Travel   :</b> "+planDetails.getDateTravel());
 			body.append("<br />");
 			body.append("<br />");
-		}
+		}*/
+		body.append("<html>");
+		body.append("<body><head><style>"
+				+"table, th, td {"
+				+"	border: 1px solid black;"
+				+"	border-collapse: collapse;"
+				+"}"
+				+"</style></head>");
+		body.append("Dear <b>"+ user.getUserName()+"</b>");
+		body.append("<table>"
+				+ " <tr>"
+				+ "<th>Plan</th>"
+				+ "<th>Hotel</th>"
+				+ "<th>Address</th>"
+				+ "<th>Temperature</th>"
+				+ "<th>Date Added</th>"
+				+ "<th>Date of travel</th>"
+				+ "</tr>");
+		for(Plan planDetails:list){
+			
+			  body.append("<tr>");
+			  body.append("<td>"+planDetails.getPlace()+"</td>"
+					+ "<td>"+planDetails.getHotel()+"</td>"
+			  		+ "<td>"+planDetails.getAddress()+"</td>"
+			  		+ "<td>"+planDetails.getClimate()+"</td>"
+			  		+ "<td>"+planDetails.getDateAdded()+"</td>"
+			  		+ "<td>"+planDetails.getDateTravel()+"</td>"
+			  		+ "</tr>");
+	}
+		 body.append("</table>");			  		
+		 body.append("</body></html>");
 		String subject = "Your Plan Confirmation";
 	    
 		
@@ -96,8 +126,8 @@ public class SendEmailController {
 		List<Plan> list = planService.getPlansById(plan.getUserId());
 		System.out.println("List"+list.size());
 		
-		for(Plan planDetails:list){
-			body.append("Hello!"+" Your friend "+user.getUserName()+" has shared their plans with you!");
+		/*for(Plan planDetails:list){
+			
 			body.append("<br />");
 			body.append("Please find the travel plans below");
 			body.append("<br />");
@@ -110,7 +140,38 @@ public class SendEmailController {
 			body.append(" <b>Date of Travel   :</b> "+planDetails.getDateTravel());
 			body.append("<br />");
 			body.append("<br />");
-		}
+		}*/
+		body.append("<html>");
+		body.append("<body><head><style>"
+				+"table, th, td {"
+				+"	border: 1px solid black;"
+				+"	border-collapse: collapse;"
+				+"}"
+				+"</style></head>");
+		body.append("Hello!"+" Your friend "+user.getUserName()+" has shared their plans with you!");
+		body.append("<table>"
+				+ " <tr>"
+				+ "<th>Plan</th>"
+				+ "<th>Hotel</th>"
+				+ "<th>Address</th>"
+				+ "<th>Temperature</th>"
+				+ "<th>Date Added</th>"
+				+ "<th>Date of travel</th>"
+				+ "</tr>");
+		for(Plan planDetails:list){
+			
+			  body.append("<tr>");
+			  body.append("<td>"+planDetails.getPlace()+"</td>"
+					+ "<td>"+planDetails.getHotel()+"</td>"
+			  		+ "<td>"+planDetails.getAddress()+"</td>"
+			  		+ "<td>"+planDetails.getClimate()+"</td>"
+			  		+ "<td>"+planDetails.getDateAdded()+"</td>"
+			  		+ "<td>"+planDetails.getDateTravel()+"</td>"
+			  		+ "</tr>");
+	}
+		 body.append("</table>");			  		
+		 body.append("</body></html>");
+		 
 		String subject = "Your Plan Confirmation";
 	    
 		

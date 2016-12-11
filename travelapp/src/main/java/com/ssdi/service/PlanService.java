@@ -30,8 +30,9 @@ public class PlanService {
 		return planRepository.save(plan);
 	}
 	
-	public void deletePlan(int id){
+	public boolean deletePlan(int id){
 		planRepository.delete(id);
+		return true;
 	}
 	public void setRepository(PlanRepository repository) {
 		this.planRepository = repository;

@@ -64,20 +64,36 @@ public class SendEmailControllerTest {
 		plans.add(plan);
 		
 		StringBuffer body = new StringBuffer();
+		body.append("<html>");
+		body.append("<body><head><style>"
+				+"table, th, td {"
+				+"	border: 1px solid black;"
+				+"	border-collapse: collapse;"
+				+"}"
+				+"</style></head>");
 		body.append("Dear <b>"+ user.getUserName()+"</b>");
-		body.append("<br />");
-		body.append("Please find your travel plans below");
-		body.append("<br />");
-		body.append("<br />");
-		body.append("<b>Plan  : </b>"+plan.getPlace());
-		body.append(" <b>Address  :</b> "+plan.getAddress());
-		body.append(" <b>Temperature  :</b> "+plan.getClimate());
-		body.append(" <b>Hotel   :</b> "+plan.getHotel());
-		body.append(" <b>Date Added  :</b>  "+plan.getDateAdded());
-		body.append(" <b>Date of Travel   :</b> "+plan.getDateTravel());
-		body.append("<br />");
-		body.append("<br />");
+		body.append("<table>"
+				+ " <tr>"
+				+ "<th>Plan</th>"
+				+ "<th>Hotel</th>"
+				+ "<th>Address</th>"
+				+ "<th>Temperature</th>"
+				+ "<th>Date Added</th>"
+				+ "<th>Date of travel</th>"
+				+ "</tr>");
 		
+			
+			  body.append("<tr>");
+			  body.append("<td>"+plan.getPlace()+"</td>"
+					+ "<td>"+plan.getHotel()+"</td>"
+			  		+ "<td>"+plan.getAddress()+"</td>"
+			  		+ "<td>"+plan.getClimate()+"</td>"
+			  		+ "<td>"+plan.getDateAdded()+"</td>"
+			  		+ "<td>"+plan.getDateTravel()+"</td>"
+			  		+ "</tr>");
+	
+		 body.append("</table>");			  		
+		 body.append("</body></html>");
 		String subject = "Your Plan Confirmation";
 		try {
 			System.out.println("Inside try method");

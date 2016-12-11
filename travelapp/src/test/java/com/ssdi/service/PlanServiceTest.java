@@ -53,9 +53,15 @@ public class PlanServiceTest {
 	
 	@Test
 	public void testAddPlan() {
+		when(planRepository.save(plan)).thenReturn(plan);
 		assertEquals(plan, planService.addPlan(plan));
 	}
 	
+	@Test
+	public void testDeletePlan() {
+		when(planRepository.save(plan)).thenReturn(plan);
+		assertEquals(true, planService.deletePlan(1));
+	}
 	@Test
 	public void testInvalidGetPlansById() {
 		when(planRepository.findPlansByUserId(plan.getUserId())).thenReturn(plans);
@@ -65,7 +71,7 @@ public class PlanServiceTest {
 	
 	@Test
 	public void testInvalidAddPlan() {
-		assertEquals(null, planService.addPlan(plan2));
+			assertEquals(null, planService.addPlan(plan2));
 	}
 	
 	/*

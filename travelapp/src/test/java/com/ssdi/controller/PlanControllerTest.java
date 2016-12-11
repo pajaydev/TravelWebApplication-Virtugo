@@ -51,6 +51,7 @@ public class PlanControllerTest {
 		
 		plan = new Plan();
 		plan.setUserId(1);
+		//plan.setUserId(1);
 		plan2 = new Plan();
 		plan2.setUserId(2);
 		plan2.setHotel(null);
@@ -94,6 +95,11 @@ public class PlanControllerTest {
 		when(planService.getPlansById(plan.getUserId())).thenReturn(plans);
 		when(planService.getPlansById(plan2.getUserId())).thenReturn(plans);
 		assertEquals(planController.GetPlans(plan2), planController.GetPlans(plan));
+	}
+	
+	@Test
+	public void testDeletePlans() {
+		assertEquals(true, planController.deletePlan(1,plan));
 	}
 	
 	

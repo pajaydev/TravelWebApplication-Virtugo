@@ -1,13 +1,16 @@
-travelApp.controller("myplansController",["$scope","baseService","baseFactory","$cookieStore","$http",'$uibModal','$log',
-                                          function($scope,baseService,baseFactory,$cookieStore,$http,$uibModal,$log){
+travelApp.controller("myplansController",["$scope","baseService","baseFactory","$cookieStore","$http","$route",'$uibModal','$log',
+                                          function($scope,baseService,baseFactory,$cookieStore,$http,$route,$uibModal,$log){
 	
 	$scope.userName = baseService.getUserName();
+	$scope.emailFlag = false;
 	var placeDetails = baseService.getLocationDetails();
-	if(placeDetails != undefined && placeDetails.url != undefined){
+	/*if(placeDetails != undefined && placeDetails.url != undefined){
 		alert(placeDetails.url);
 		$scope.placeUrl = placeDetails.url;
-	}
+		alert("placeUrl"+placeDetails.url);
+	}*/
 	if(baseService.getHotelUrl() != undefined){
+		
 		$scope.hotelUrl = baseService.getHotelUrl(); 
 	}
 	var data = {"userId":$cookieStore.get('userId')}
@@ -25,6 +28,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 				$scope.myPlaces = response.data;
 				
 				
+				
 			},
 			function(response){
 				//$scope.hotelFlag = true;
@@ -32,6 +36,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 	
 	$scope.sendEmail = function(){
 		var data = {"userId":$cookieStore.get('userId')}
+		$scope.emailFlag = true;
 		var request = {
 				method : 'POST',
 				url : '/sendEmail',
@@ -44,7 +49,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 				function(response) {
 					
 					$scope.myPlaces = response.data;
-					
+					$scope.emailFlag = true;
 					
 				},
 				function(response){
@@ -53,8 +58,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 		
 	}
 
-	$scope.deletePlace = function(id){
-		alert("place"+id);
+	$scope.deletePlan = function(id){
 		var data = {"userId":$cookieStore.get('userId')};
 		var request = {
 				method : 'POST',
@@ -67,9 +71,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 		$http(request).then(
 				function(response) {
 					
-					$scope.myPlaces = response.data;
-					
-					
+					$route.reload();
 				},
 				function(response){
 					//$scope.hotelFlag = true;

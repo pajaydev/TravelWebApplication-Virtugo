@@ -1,5 +1,5 @@
 travelApp.controller("homeController",function(NgMap,baseFactory,baseService,$location,$rootScope,$scope,$cookieStore){
-	
+	$scope.notify = false;
 	$scope.showMap=true;
 	/*if($location.path() == "/dashboard"){
 	   if($cookieStore != undefined && $cookieStore.get('userName') != ""){
@@ -82,6 +82,11 @@ travelApp.controller("homeController",function(NgMap,baseFactory,baseService,$lo
 	    	baseService.setLocationDetails(value);
 	    	baseService.setFlag(flag);
 	    	$location.path("/placeDetails");
+	    }
+	    
+	    $scope.func = function(){
+	    	
+	    	$scope.notify = true;
 	    }
 	  
 })

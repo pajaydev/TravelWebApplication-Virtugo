@@ -81,12 +81,14 @@ Date of Travel:
 <ul class="list-group ul-class" data-ng-repeat="reviewItem in reviewDetails">
                 <li class="list-group-item">
                     <div class="row">
-                    <div class="col-xs-6 col-md-8">
-                            <p class="text-warning"><small>{{reviewItem.dateAdded}}</small></p>
+                    <div class="col-xs-6 col-md-10">
+                            <p class="text-warning"><small>Created at: {{reviewItem.dateAdded}}</small> <small style="margin-left:80px">Reviewed by : {{reviewItem.user.userName}}</small></p>
+                            
                             <p>{{reviewItem.review}}</p>
                            
-                            <div class="zeroMargin" ratings rating="starRating1" class="inline-block" read-only="true" max-rating="5" ></div>
-            <div class="inline-block"> <span class="label label-primary">{{reviewItem.rating}}</span>
+                           <div style='display: inline-block; margin: 0px; padding: 0px'; data-ng-repeat="idx in maxRatings track by $index">
+                 <img ng-src='{{(rating <= $index) && "http://www.codeproject.com/script/ratings/images/star-empty-lg.png" || "http://www.codeproject.com/script/ratings/images/star-fill-lg.png"}}'></img></div>
+            <div class="inline-block"> <span class="label label-primary">Star Rating: {{reviewItem.rating}}</span>
             </div>
                         </div>
                        
@@ -100,7 +102,7 @@ Date of Travel:
 <div class="writeReviews " ng-show="reviews">
 
 
- <div data-ng-show="ReviewsSuccess" class="text-success"><span class="glyphicon glyphicon-ok"><p>Reviews has been saved</p></span></div>
+ <div data-ng-show="ReviewsSuccess" class="text-success"><span class="glyphicon glyphicon-ok"><p style="display: inline-block;margin-left: 5px;">Reviews has been saved</p></span></div>
 <form class="form-horizontal zeroMargin" name="reviewsForm" ng-submit="createReview(starRating1,textArea,item.venue.name)" novalidate>
 
 
@@ -109,7 +111,7 @@ Date of Travel:
 <label for="ratings" class="col-sm-3 control-label">Ratings:</label>
 
 <div class="zeroMargin" ratings rating="starRating1" class="inline-block" read-only="false" max-rating="5" click="click1(param)" ></div>
-            <div class="inline-block"> <span class="label label-primary">Star Rating: {{starRating1}}</span>
+            <div class="inline-block"> <span class="label label-primary">Star Rating: {{starRating1 || 0}}</span>
             </div></div>
  
 <div class="form-group"  ng-class="{ 'has-error' : reviewsForm.textArea.$error.required && !reviewsForm.textArea.$pristine }">

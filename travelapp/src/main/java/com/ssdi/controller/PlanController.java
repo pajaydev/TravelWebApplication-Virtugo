@@ -40,7 +40,7 @@ public class PlanController {
 	public Plan AddPlans(@Validated(Create.class) @RequestBody Plan plan) {
 		/*if(null != plan.getDateTravel() || plan.getDateTravel().toString() == ""){*/
 		
-		if(plan.getDateTravel() != null || plan.getDateTravel().toString() != ""){
+		if( null != plan.getDateTravel()){
 			System.out.println("Inside If"+plan.getDateTravel());
 			plan.setDateTravel(new java.sql.Date(plan.getDateTravel().getTime()));
 		//plan.setDateTravel(new java.sql.Date(new Date().getTime()));
@@ -59,9 +59,10 @@ public class PlanController {
 	}
 	
 	@RequestMapping(value = "/deletePlace/{id}", method = RequestMethod.POST)
-	public void deletePlace(@PathVariable int id,@Validated(Create.class) @RequestBody Plan plan){
+	public boolean deletePlan(@PathVariable int id,@Validated(Create.class) @RequestBody Plan plan){
 		System.out.println("delete plans************");
 		planService.deletePlan(id);
+		return true;
 	}
 			
 }

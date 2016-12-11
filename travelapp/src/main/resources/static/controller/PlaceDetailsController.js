@@ -3,7 +3,7 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
 	
 	var placeDetails = baseService.locationDetails;
 	var flag = baseService.getFlag();
-	alert(flag);
+	
 	var today = new Date();
 	$scope.icon = "";
 	$scope.rating = 3;
@@ -28,14 +28,24 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
   	  alert("No Nearby Hotels Available");
     });}
 	else{
+	$scope.reviews = false;
 	$scope.reviewsDiv = true;
-	//populate all the reviews
-   /* baseFactory.getReviews($scope.placeDetails.location.name).then(function (result,status){
-    	$scope.reviews = "No reviews found";
+	var data = {"place":$scope.placeDetails.name}
+	 baseFactory.getReviews(data).then(function (result,status) {
+		 
+		
+		 $scope.reviewDetails = result.data;
+		 $scope.maxRatings = [];
+
+	      
+		//$scope.savedRatings = $scope.reviewItem.rating;
+		//alert($scope.savedRatings);
+		  //$scope.filteredPlacesCount  = result.data.response.totalResults;
+		    
     }, function (error) {
         //alert("error"+error.message);
-    	  alert("No Nearby Hotels Available");
-      });*/
+  	  $scope.weatherFlag = true;
+    });
     }
 	
 	
@@ -101,9 +111,10 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
     $scope.saveHotel = function(value){
     	var weather = baseService.getweatherDetails();
     	var date = baseService.getDate();
+    	
     	if(value.url != undefined){
     	baseService.setHotelUrl(value.url);}
-    	alert(date);
+    	
     	var data = {
     			"place": $scope.placeDetails.name,
     			"address":value.location.address +", "+ value.location.city +", "+ value.location.country ,
@@ -111,7 +122,9 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
     			"dateTravel":date,
     			"dateAdded":"",
     			"climate": weather,
-    			"userId":$cookieStore.get('userId')
+    			"userId":$cookieStore.get('userId'),
+    			"placeUrl":placeDetails.url,
+    			"hotelUrl":value.url
     			
     			
     	}
@@ -148,11 +161,11 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
     }
     //Method to persist User's review into the database
     $scope.createReview = function(rating, review){
-    	alert("Create Reviews"+rating+review+$scope.placeDetails.name);
+    	
     	var data = {"rating":rating,"review":review,"place":$scope.placeDetails.name,"userId":$cookieStore.get('userId')}
     	 baseFactory.postReviews(data).then(function (result,status) {
 			 
-			 alert("success create reviews");
+			
     		 $scope.ReviewsSuccess = result.data;
 			 
 			  //$scope.filteredPlacesCount  = result.data.response.totalResults;
@@ -166,14 +179,20 @@ travelApp.controller("placeDetailsController",["$scope","baseService","baseFacto
     //Method to retrieve the reviews from the database
     $scope.getReviews = function(){
     	$scope.reviews = false;
-    	$scope.reviewDetails = [];
-    	alert("Create Reviews"+$scope.placeDetails.name);
+    	//$scope.reviewDetails = [];
+    	
     	var data = {"place":$scope.placeDetails.name}
     	 baseFactory.getReviews(data).then(function (result,status) {
 			 
-			 alert("success get reviews");
+			 
     		 $scope.reviewDetails = result.data;
-			
+    		 $scope.maxRatings = [];
+
+    	        for (var i = 1; i <= $scope.reviewDetails.review; i++) {
+    	            $scope.maxRatings.push({});
+    	        };
+			//$scope.savedRatings = $scope.reviewItem.rating;
+			//alert($scope.savedRatings);
 			  //$scope.filteredPlacesCount  = result.data.response.totalResults;
 			    
          }, function (error) {

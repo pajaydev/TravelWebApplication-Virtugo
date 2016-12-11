@@ -33,6 +33,12 @@ public class Plan {
 	@Column(name="Climate")
 	private String climate;
 	
+	@Column(name="PlaceUrl")
+	private String placeUrl;
+	
+	@Column(name="HotelUrl")
+	private String hotelUrl;
+	
 	@ManyToOne
 	@JoinColumn(name="userId", insertable=false, updatable=false)
 	  private User user;
@@ -183,6 +189,34 @@ public class Plan {
 	 */
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
+	}
+
+	/**
+	 * @return the placeUrl
+	 */
+	public String getPlaceUrl() {
+		return placeUrl;
+	}
+
+	/**
+	 * @param placeUrl the placeUrl to set
+	 */
+	public void setPlaceUrl(String placeUrl) {
+		this.placeUrl = placeUrl;
+	}
+
+	/**
+	 * @return the hotelUrl
+	 */
+	public String getHotelUrl() {
+		return hotelUrl;
+	}
+
+	/**
+	 * @param hotelUrl the hotelUrl to set
+	 */
+	public void setHotelUrl(String hotelUrl) {
+		this.hotelUrl = hotelUrl;
 	}
 
 		
