@@ -1,5 +1,5 @@
 travelApp.directive('ratings',function(){
-	alert("ratingssss");
+	//alert("ratingssss");
 	return{
 		
 		scope:{

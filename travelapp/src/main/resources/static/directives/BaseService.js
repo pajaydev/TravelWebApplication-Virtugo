@@ -6,6 +6,13 @@ travelApp.service("baseService",function(){
 	var weatherDetails = "";
 	var hotelUrl = "";
 	var flag ="";
+	var id=[];
+	this.setId = function(id){
+		this.id = id;
+	}
+	this.getId = function(){
+		return this.id;
+	}
 	this.setDate = function(date){
 		this.date = date;
 	}

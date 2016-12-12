@@ -3,6 +3,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 	
 	$scope.userName = baseService.getUserName();
 	$scope.emailFlag = false;
+	$scope.ids = [];
 	var placeDetails = baseService.getLocationDetails();
 	/*if(placeDetails != undefined && placeDetails.url != undefined){
 		alert(placeDetails.url);
@@ -60,6 +61,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 
 	$scope.deletePlan = function(id){
 		var data = {"userId":$cookieStore.get('userId')};
+		//alert("Confirm Delete Plan!!");
 		var request = {
 				method : 'POST',
 				url : '/deletePlace/'+id,
@@ -83,7 +85,12 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
   	  return Math.round((temp - 32) * 0.5);
   	};
   	
-  	
+  	$scope.checkbox = function(id){
+  		alert(id);
+  		
+  		$scope.ids.push(id);
+  		baseService.setId($scope.ids);
+  	}
   	 $scope.openPopup = function () {
          var template="";
         

@@ -1,6 +1,8 @@
 package com.ssdi.entity;
 
 import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -47,6 +49,9 @@ public class Plan {
 	
 	@Transient
 	private String emailId;
+	
+	@Transient
+	private List<Integer> idList;
 	
 	public Plan(){
 	}
@@ -217,6 +222,20 @@ public class Plan {
 	 */
 	public void setHotelUrl(String hotelUrl) {
 		this.hotelUrl = hotelUrl;
+	}
+
+	/**
+	 * @return the idList
+	 */
+	public List<Integer> getIdList() {
+		return idList;
+	}
+
+	/**
+	 * @param idList the idList to set
+	 */
+	public void setIdList(List<Integer> idList) {
+		this.idList = idList;
 	}
 
 		

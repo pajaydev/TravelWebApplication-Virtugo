@@ -7,4 +7,6 @@ import com.ssdi.entity.Plan;
 public interface PlanRepository extends JpaRepository<Plan, Integer>{
 
 	public List<Plan> findPlansByUserId(Integer userId);
+
+	public Plan findPlansByPlaceId(Integer id);
 }

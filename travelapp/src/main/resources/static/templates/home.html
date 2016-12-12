@@ -26,7 +26,7 @@
   <!--  Search box for Guest User -->
 <form class="form-horizontal fullHeight">
  <div class="form-group">  
-  <input type="text" class="searchClass" style="width: 400px;
+  <input type="text" class="searchClass form-control" style="width: 400px;
     align-items: center;
     margin-left: 300px;" places-auto-complete size=80
     ng-model="vm.address"
@@ -39,12 +39,12 @@
     geo-fallback-center="[35.2271, -80.8431]"
     geo-callback="vm.callbackFunc('you')"><marker on-click="func()" position="{{vm.address}}" title="{{vm.address}}"></marker>
     <marker  position="current-position" title="{{vm.address}}" on-click="func()">
-    <custom-marker ng-repeat="p in filteredPlaces"  on-click="func()" position="{{p.venue.location.address}}"  title="{{p.venue.name}} (please login to view details)">
-    </custom-marker>
+    <marker ng-repeat="p in filteredPlaces"  on-click="func()" position="{{p.venue.location.address}}"  title="{{p.venue.name}} (please login to view details)">
+    </marker>
     
     </ng-map>
    </ng-map> </div>
-   <div  ng-repeat="p in filteredPlaces">{{p}}</div>
+   
 </div>
 </div>
 </div>

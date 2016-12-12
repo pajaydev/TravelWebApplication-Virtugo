@@ -25,6 +25,10 @@ public class PlanService {
 		List<Plan> plans = planRepository.findPlansByUserId(id);
 		return plans;
 	}
+	public Plan getPlansByPlaceId(Integer id) {
+		Plan plan = planRepository.findPlansByPlaceId(id);
+		return plan;
+	}
 	
 	public Plan addPlan(Plan plan){
 		return planRepository.save(plan);

@@ -3,6 +3,7 @@
  */
 package com.ssdi.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -55,12 +56,17 @@ public class SendEmailController {
 		System.out.println("*******Inside Send Email to me*********");
 		System.out.println("Email"+plan.getUserId());
 		StringBuffer body = new StringBuffer();
+		List<Plan> list = new ArrayList<Plan>();
+		List<Integer> listId = plan.getIdList();
+		System.out.println("list**"+listId.size());
 		User user = userService.findOne(plan.getUserId());
 		String email = user.getEmail();
-		
-		List<Plan> list = planService.getPlansById(plan.getUserId());
+		for(Integer planList:listId){
+			list.add(planService.getPlansByPlaceId(planList));
+		}
+		//List<Plan> list = planService.getPlansById(plan.getUserId());
 		System.out.println("List"+list.size());
-	
+	    
 		/*for(Plan planDetails:list){
 			
 			body.append("<br />");
@@ -118,12 +124,17 @@ public class SendEmailController {
 		System.out.println("Email**********"+ plan.getEmailId());
 		//String mail = (String) EmailId.subSequence(12, EmailId.length()-2);
 		String mail = plan.getEmailId();
+		List<Plan> list = new ArrayList<Plan>();
+		List<Integer> listId = plan.getIdList();
+		System.out.println("list**"+listId.size());
 		System.out.println(mail);
 		StringBuffer body = new StringBuffer();
 		User user = userService.findOne(plan.getUserId());
 		System.out.println(plan.getUserId());
-		
-		List<Plan> list = planService.getPlansById(plan.getUserId());
+		for(Integer planList:listId){
+			list.add(planService.getPlansByPlaceId(planList));
+		}
+		//List<Plan> list = planService.getPlansById(plan.getUserId());
 		System.out.println("List"+list.size());
 		
 		/*for(Plan planDetails:list){
