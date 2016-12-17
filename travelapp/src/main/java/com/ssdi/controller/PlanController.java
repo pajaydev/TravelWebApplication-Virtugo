@@ -24,45 +24,51 @@ public class PlanController {
 
 	PlanService planService;
 	private static final Logger LOGGER = LoggerFactory.getLogger(PlanController.class);
-	
+
 	@Autowired
 	public PlanController(PlanService planService) {
 		super();
 		this.planService = planService;
 	}
-    public PlanController(){
-		
+
+	public PlanController() {
+
 	}
-    public void setPlanService(PlanService planService){
+
+	public void setPlanService(PlanService planService) {
 		this.planService = planService;
 	}
+
 	@RequestMapping(value = "/savePlan", method = RequestMethod.POST)
 	public Plan AddPlans(@Validated(Create.class) @RequestBody Plan plan) {
-		/*if(null != plan.getDateTravel() || plan.getDateTravel().toString() == ""){*/
-		
-		if( null != plan.getDateTravel()){
-			System.out.println("Inside If"+plan.getDateTravel());
+		/*
+		 * if(null != plan.getDateTravel() || plan.getDateTravel().toString() ==
+		 * ""){
+		 */
+
+		if (null != plan.getDateTravel()) {
+			
 			plan.setDateTravel(new java.sql.Date(plan.getDateTravel().getTime()));
-		//plan.setDateTravel(new java.sql.Date(new Date().getTime()));
-		}else{
-			System.out.println("Else loop"+plan.getDateTravel());
+			// plan.setDateTravel(new java.sql.Date(new Date().getTime()));
+		} else {
+			
 			plan.setDateTravel(new java.sql.Date(new Date().getTime()));
 		}
 		plan.setDateAdded(new java.sql.Date(new Date().getTime()));
 		return planService.addPlan(plan);
 	}
-	
+
 	@RequestMapping(value = "/plan", method = RequestMethod.POST)
-	public List<Plan> GetPlans(@Validated(Create.class) @RequestBody Plan plan){
-		System.out.println("fetch plans************");
+	public List<Plan> GetPlans(@Validated(Create.class) @RequestBody Plan plan) {
+		
 		return planService.getPlansById(plan.getUserId());
 	}
-	
+
 	@RequestMapping(value = "/deletePlace/{id}", method = RequestMethod.POST)
-	public boolean deletePlan(@PathVariable int id,@Validated(Create.class) @RequestBody Plan plan){
-		System.out.println("delete plans************");
+	public boolean deletePlan(@PathVariable int id, @Validated(Create.class) @RequestBody Plan plan) {
+		
 		planService.deletePlan(id);
 		return true;
 	}
-			
+
 }

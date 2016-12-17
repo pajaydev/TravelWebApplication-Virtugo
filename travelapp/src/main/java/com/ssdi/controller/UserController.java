@@ -1,5 +1,12 @@
 package com.ssdi.controller;
 
+/**
+ * @author ajaykumar
+ * 
+ * Controller class for
+ * User login and registration
+ *
+ */
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,33 +28,25 @@ import com.ssdi.service.UserService;
 public class UserController {
 
 	UserService userService;
-	
+
 	@Autowired
 	public UserController(UserService userService) {
 		super();
 		this.userService = userService;
 	}
-	
-    public UserController(){
-    	
-    }
+
+	public UserController() {
+
+	}
+
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public User register(@Validated(Create.class) @RequestBody User user) {
-		System.out.println("*******Inside registration*********");
-		System.out.println("Email"+user.getEmail());
-		//user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-		System.out.println("*********Encrypted"+user.getPassword());
-		
 		return userService.createUser(user);
 	}
-    
-	
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public User login(@Validated(Authenticate.class) @RequestBody User user, HttpServletResponse response) {
-		System.out.println("******login page*********");
-		System.out.println("Email"+user.getEmail());
-	
+
 		user = userService.loginUser(user);
 		if (user == null) {
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -57,6 +56,7 @@ public class UserController {
 			return user;
 		}
 	}
+
 	public void setService(UserService service) {
 		this.userService = service;
 	}

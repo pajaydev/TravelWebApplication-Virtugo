@@ -17,31 +17,37 @@ import com.ssdi.service.ReviewService;
 
 @RestController
 public class ReviewController {
-	
+
 	ReviewService reviewService;
-	
+
 	@Autowired
 	public ReviewController(ReviewService reviewService) {
 		super();
 		this.reviewService = reviewService;
 	}
-    public ReviewController() {
+
+	public ReviewController() {
 	}
-    public void setReviewService(ReviewService service) {
+
+	public void setReviewService(ReviewService service) {
 		this.reviewService = service;
 	}
+
 	@RequestMapping(value = "/createReview", method = RequestMethod.POST)
 	public Review createReview(@Validated(Create.class) @RequestBody Review review) {
-		/*if(null != plan.getDateTravel() || plan.getDateTravel().toString() == ""){*/
+		/*
+		 * if(null != plan.getDateTravel() || plan.getDateTravel().toString() ==
+		 * ""){
+		 */
+
 		
-		System.out.println("Create Reviews");
 		review.setDateAdded(new java.sql.Date(new Date().getTime()));
 		return reviewService.addReview(review);
 	}
-	
+
 	@RequestMapping(value = "/getReview", method = RequestMethod.POST)
-	public List<Review> GetReviews(@Validated(Create.class) @RequestBody Review review){
-		System.out.println("get Reviews************");
+	public List<Review> GetReviews(@Validated(Create.class) @RequestBody Review review) {
+		
 		return reviewService.getReviewsByPlace(review.getPlace());
 	}
 

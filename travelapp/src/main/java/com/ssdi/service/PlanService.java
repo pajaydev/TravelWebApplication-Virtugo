@@ -17,27 +17,30 @@ public class PlanService {
 		super();
 		this.planRepository = myPlanRepository;
 	}
-    public PlanService() {
-		
+
+	public PlanService() {
+
 	}
-	
+
 	public List<Plan> getPlansById(Integer id) {
 		List<Plan> plans = planRepository.findPlansByUserId(id);
 		return plans;
 	}
+
 	public Plan getPlansByPlaceId(Integer id) {
 		Plan plan = planRepository.findPlansByPlaceId(id);
 		return plan;
 	}
-	
-	public Plan addPlan(Plan plan){
+
+	public Plan addPlan(Plan plan) {
 		return planRepository.save(plan);
 	}
-	
-	public boolean deletePlan(int id){
+
+	public boolean deletePlan(int id) {
 		planRepository.delete(id);
 		return true;
 	}
+
 	public void setRepository(PlanRepository repository) {
 		this.planRepository = repository;
 	}
