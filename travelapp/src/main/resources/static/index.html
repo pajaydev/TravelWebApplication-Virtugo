@@ -1,9 +1,12 @@
+<!--  Main Page -->
 <!DOCTYPE html>
 <html lang="en" ng-app="TravelApp">
 <head>
 <title>Travel Planner System</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Ajaykumar Prathap">
+<meta name="title" content="Virtugo - Travel Planner System">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- CSS libraries Section -->
@@ -25,7 +28,8 @@
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWIQDRLj908AucZ1ijuJT7oUEPpK9zGxk"></script> -->
 <script
 	src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAguempl5060mAg0NoL4j652xH6griXyLI&libraries=places"> -->
 <!-- Directives Section -->
 <script src="directives/route.js"></script>
@@ -45,7 +49,7 @@
 	<!-- Header Section -->
 
 	<header ng-controller="baseController">
-		<nav style="background-color: #8a8b8a; color:white" id="header"
+		<nav style="background-color: #8a8b8a; color: white" id="header"
 			class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
@@ -56,16 +60,19 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<h3 style="margin-top: 10px;font-family: 'Lobster',cursive;">Travel Planner System</h3>
+					<h3 style="margin-top: 10px; font-family: 'Lobster', cursive;">Travel
+						Planner System</h3>
 				</div>
 
 				<div class="collapse navbar-collapse" id="rightHeader">
 					<ul class="nav navbar-nav navbar-right">
-              <li ng-show="buttonEnable" ng-click="login()"><a  ng-click="login()" >Login</a></li>
-              <li ng-show="buttonEnable" ng-click="login()" ><a>Register</a></li>
-              <li ng-hide="buttonEnable" ng-click="explore()" ><a>Explore</a></li>
-              <li ng-hide="buttonEnable" ng-click="myplans()"><a>My Plans</a></li>
-              <li ng-hide="buttonEnable" ng-click="logOut()"><a>Log Out</a></li>
+						<li ng-show="buttonEnable" ng-click="login()"><a
+							ng-click="login()">Login</a></li>
+						<li ng-show="buttonEnable" ng-click="login()"><a>Register</a></li>
+						<li ng-hide="buttonEnable" ng-click="explore()"><a>Explore</a></li>
+						<li ng-hide="buttonEnable" ng-click="myplans()"><a>My
+								Plans</a></li>
+						<li ng-hide="buttonEnable" ng-click="logOut()"><a>Log Out</a></li>
 						<!-- <button type="submit" ng-click="login()" ng-show="buttonEnable" class="btn btn-primary">Login</button>
 						<button type="submit" ng-click="login()" ng-show="buttonEnable" class="btn btn-primary">Register</button>
 						<button type="submit" ng-click="myplans()" ng-hide="buttonEnable" class="btn btn-primary">My Plans</button>

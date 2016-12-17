@@ -1,51 +1,43 @@
 <!--  Home Page for Guest User -->
 
 
-
-<!-- <div class=homeImage ng-show="showMap">
-    <div class="inputPlace">
-    <input  places-auto-complete size=80
-    ng-model="vm.address"
-    types="{{types}}"
-    on-place-changed="vm.placeChanged()" />
-    </div>
-</div>
- -->
-
-
-
 <div class="container fullHeight">
-<div class="row fullHeight">
-<div class="col-md-12">
-  
-<div ng-show="notify" class="alert alert-info">
-  <strong>Hi!</strong> Please login to view the details.
-</div>
+	<div class="row fullHeight">
+		<div class="col-md-12">
 
-<div style="margin-top:20px">
-  <!--  Search box for Guest User -->
-<form class="form-horizontal fullHeight">
- <div class="form-group">  
-  <input type="text" class="searchClass form-control" style="width: 400px;
-    align-items: center;
-    margin-left: 300px;" places-auto-complete size=80
-    ng-model="vm.address"
-    types="{{types}}"
-    on-place-changed="vm.placeChanged()" placeholder="Enter the location to search.." /> <br/></div></form>
-    
-    <!--  Showing Map for Guest User -->
-<div class="borderColor">
- <ng-map style="margin-top:20px" zoom="11" center='current-position'
-    geo-fallback-center="[35.2271, -80.8431]"
-    geo-callback="vm.callbackFunc('you')"><marker on-click="func()" position="{{vm.address}}" title="{{vm.address}}"></marker>
-    <marker  position="current-position" title="{{vm.address}}" on-click="func()">
-    <marker ng-repeat="p in filteredPlaces"  on-click="func()" position="{{p.venue.location.address}}"  title="{{p.venue.name}} (please login to view details)">
-    </marker>
-    
-    </ng-map>
-   </ng-map> </div>
-   
-</div>
-</div>
-</div>
+			<div ng-show="notify" class="alert alert-info">
+				<strong>Hi!</strong> Please login to view the details.
+			</div>
+
+			<div style="margin-top: 20px">
+				<!--  Search box for Guest User -->
+				<form class="form-horizontal fullHeight">
+					<div class="form-group">
+						<input type="text" class="searchClass form-control"
+							style="width: 400px; align-items: center; margin-left: 300px;"
+							places-auto-complete size=80 ng-model="vm.address"
+							types="{{types}}" on-place-changed="vm.placeChanged()"
+							placeholder="Enter the location to search.." /> <br />
+					</div>
+				</form>
+
+				<!--  Showing Map for Guest User -->
+				<div class="borderColor">
+					<ng-map style="margin-top:20px" zoom="11" center='current-position'
+						geo-fallback-center="[35.2271, -80.8431]"
+						geo-callback="vm.callbackFunc('you')">
+					<marker on-click="func()" position="{{vm.address}}"
+						title="{{vm.address}}"></marker> <marker
+						position="current-position" title="{{vm.address}}"
+						on-click="func()"> <marker
+						ng-repeat="p in filteredPlaces" on-click="func()"
+						position="{{p.venue.location.address}}"
+						title="{{p.venue.name}} (please login to view details)">
+					</marker></ng-map>
+					</ng-map>
+				</div>
+
+			</div>
+		</div>
+	</div>
 </div>

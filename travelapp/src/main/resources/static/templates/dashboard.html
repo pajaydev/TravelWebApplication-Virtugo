@@ -1,76 +1,91 @@
+<!--  Home Page for Registered User -->
+
 <div class="container-fluid home fullHeight">
-  <div class="row content fullHeight">
-  
-    
-    <div class="col-md-3 sidenavright">
- <div class="borderColor">
- <ng-map  zoom="11" center='current-position'
-    geo-fallback-center="[35.2271, -80.8431]"
-    geo-callback="vm.callbackFunc('you')"><marker position="{{vm.address}}" title="{{vm.address}}"></marker>
-    <marker position="current-position" title="{{vm.address}}">
-    </marker>
- 
-     <marker ng-repeat="p in filteredPlaces"  position="{{p.venue.location.address}}"  title="{{p.venue.name}}"></marker></ng-map>
-    </div></div>
-    
+	<div class="row content fullHeight">
 
-    
-<div class="col-md-8 fullHeight ">
-<form class="form-horizontal fullHeight">
-        <div class="form-group">
-<div class="col-md-5 col-xs-4 col-sm-5" style="margin-top:10px">
-                <input type="text"  places-auto-complete size=80
-    ng-model="vm.address"
-    
-    types="{{types}}"
-    on-place-changed="vm.placeChanged()"  class="form-control" placeholder="Explore Places In. e.g. New York" />
-            </div>
-            
 
-            <div class="col-md-2 col-xs-4 col-sm-2" style="margin-top:10px">
-                <button class="btn btn-primary pull-right" data-ng-click="doSearch()"><span class="glyphicon glyphicon-search"></span>Explore</button>
-            </div>
-           
-        </div>
-        <div class="placesDiv">
-<ul class="list-group" data-ng-repeat="item in filteredPlaces">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-2 col-md-1">
-                            <img data-ng-src="{{buildCategoryIcon(item.venue.categories[0].icon)}}"
-                                title="{{item.venue.categories[0].shortName}}" class="venueIcon" />
-                        </div>
-                        <div class="col-xs-6 col-md-8">
-                            <a href="{{item.venue.url}}" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
-                                <h4 class="venueName">{{item.venue.name}}</h4>
-                            </a>
-                        </div>
-                        <div class="col-xs-4 col-md-3">
-                            &nbsp;
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-2 col-md-1">
-                            <span class="badge">{{item.venue.rating | number:1}}</span>
-                        </div>
-                        <div class="col-xs-6 col-md-8">
-                            <p class="text-warning"><small>{{(item.venue.location.address != null) && item.venue.location.address}} - {{item.venue.categories[0].shortName}}</small></p>
-                            <p>{{item.tips[0].text}}</p>
-                            <hr class="seperator" />
-                            <a href="" data-ng-click="viewDetails(item.venue,'details')">View Details</a>
-                            <a href="" style="padding-left:325px" data-ng-click="viewDetails(item.venue,'reviews')">View Reviews</a>
-                        </div>
-                        <div class="col-xs-4 col-md-3">
-                            <a href="" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
-                                <img data-ng-src="{{buildVenueThumbnail(item.venue.photos.groups[0])}}" class="img-thumbnail" /></a>
-                        </div>
-                    </div>
+		<div class="col-md-3 sidenavright">
+			<div class="borderColor">
+				<ng-map zoom="11" center='current-position'
+					geo-fallback-center="[35.2271, -80.8431]"
+					geo-callback="vm.callbackFunc('you')">
+				<marker position="{{vm.address}}" title="{{vm.address}}"></marker> <marker
+					position="current-position" title="{{vm.address}}"> </marker> <marker
+					ng-repeat="p in filteredPlaces"
+					position="{{p.venue.location.address}}" title="{{p.venue.name}}"></marker></ng-map>
+			</div>
+		</div>
 
-                </li>
-            </ul></div>
-        
 
-</div>
-</div>
+
+		<div class="col-md-8 fullHeight ">
+			<form class="form-horizontal fullHeight">
+				<div class="form-group">
+					<div class="col-md-5 col-xs-4 col-sm-5" style="margin-top: 10px">
+						<input type="text" places-auto-complete size=80
+							ng-model="vm.address" types="{{types}}"
+							on-place-changed="vm.placeChanged()" class="form-control"
+							placeholder="Explore Places In. e.g. New York" />
+					</div>
+
+
+					<div class="col-md-2 col-xs-4 col-sm-2" style="margin-top: 10px">
+						<button class="btn btn-primary pull-right"
+							data-ng-click="doSearch()">
+							<span class="glyphicon glyphicon-search"></span>Explore
+						</button>
+					</div>
+
+				</div>
+				<div class="placesDiv">
+					<ul class="list-group" data-ng-repeat="item in filteredPlaces">
+						<li class="list-group-item">
+							<div class="row">
+								<div class="col-xs-2 col-md-1">
+									<img
+										data-ng-src="{{buildCategoryIcon(item.venue.categories[0].icon)}}"
+										title="{{item.venue.categories[0].shortName}}"
+										class="venueIcon" />
+								</div>
+								<div class="col-xs-6 col-md-8">
+									<a href="{{item.venue.url}}"
+										data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
+										<h4 class="venueName">{{item.venue.name}}</h4>
+									</a>
+								</div>
+								<div class="col-xs-4 col-md-3">&nbsp;</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-2 col-md-1">
+									<span class="badge">{{item.venue.rating | number:1}}</span>
+								</div>
+								<div class="col-xs-6 col-md-8">
+									<p class="text-warning">
+										<small>{{(item.venue.location.address != null) &&
+											item.venue.location.address}} -
+											{{item.venue.categories[0].shortName}}</small>
+									</p>
+									<p>{{item.tips[0].text}}</p>
+									<hr class="seperator" />
+									<a href="" data-ng-click="viewDetails(item.venue,'details')">View
+										Details</a> <a href="" style="padding-left: 325px"
+										data-ng-click="viewDetails(item.venue,'reviews')">View
+										Reviews</a>
+								</div>
+								<div class="col-xs-4 col-md-3">
+									<a href=""
+										data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
+										<img
+										data-ng-src="{{buildVenueThumbnail(item.venue.photos.groups[0])}}"
+										class="img-thumbnail" />
+									</a>
+								</div>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+		</div>
+	</div>
 </div>
 </form>
