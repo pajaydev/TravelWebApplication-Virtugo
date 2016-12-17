@@ -4,6 +4,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 	$scope.userName = baseService.getUserName();
 	$scope.emailFlag = false;
 	$scope.ids = [];
+	baseService.getId("");
 	var placeDetails = baseService.getLocationDetails();
 	/*if(placeDetails != undefined && placeDetails.url != undefined){
 		alert(placeDetails.url);
@@ -36,7 +37,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 			});
 	
 	$scope.sendEmail = function(){
-		var data = {"userId":$cookieStore.get('userId')}
+		var data = {"userId":$cookieStore.get('userId'),"idList":baseService.getId()}
 		$scope.emailFlag = true;
 		var request = {
 				method : 'POST',
@@ -70,6 +71,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
 				},
 				data : data
 			}
+		alert("Confirm Delete");
 		$http(request).then(
 				function(response) {
 					
@@ -86,7 +88,7 @@ travelApp.controller("myplansController",["$scope","baseService","baseFactory","
   	};
   	
   	$scope.checkbox = function(id){
-  		alert(id);
+  		//alert(id);
   		
   		$scope.ids.push(id);
   		baseService.setId($scope.ids);
