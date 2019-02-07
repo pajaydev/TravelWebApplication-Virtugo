@@ -4,7 +4,7 @@ This project is to develop a travel planner system, which describes about the cl
 
 Installation Guide:
 
-******* SOFTWARE NEEDS TO BE INSTALLED **********
+## Software Installation
 
 1. Install Spring STS IDE from https://spring.io/tools/sts/all
    NOTE: If you are using Eclipse IDE install Spring Boot jars
@@ -12,7 +12,7 @@ Installation Guide:
 3. Install Apache Maven in your system (Version Used: 3.3.3)
 4. Install MySql Server Workbench database(Version Used: 6.3)
 
-******* SET UP INSTRUCTION **********
+## Setup Instructions
 
 1. Open MySql Server 
    Run the script file as "Open Sql Script"
@@ -39,3 +39,6 @@ Installation Guide:
 7. Run the Project as Run As --> Spring Boot App
 
 8. *** You are Good to go.. Play with our Application ******
+
+## Issues
+If you are facing any issues, you can create the issues [here](https://github.com/ajay2507/TravelWebApplication-Virtugo/issues).
